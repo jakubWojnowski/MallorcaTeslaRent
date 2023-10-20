@@ -10,4 +10,12 @@
       <ProjectReference Include="..\MallorcaTeslaRent.Domain\MallorcaTeslaRent.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="11.8.0" />
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.8.0" />
+      <PackageReference Include="MediatR" Version="12.1.1" />
+      <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="7.0.12" />
+      <PackageReference Include="Riok.Mapperly" Version="3.2.0" />
+    </ItemGroup>
+
 </Project>

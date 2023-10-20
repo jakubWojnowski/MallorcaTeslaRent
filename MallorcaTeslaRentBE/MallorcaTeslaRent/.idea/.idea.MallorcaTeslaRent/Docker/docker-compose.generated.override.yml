@@ -1,0 +1,27 @@
+# This is a generated file. Not intended for manual editing.
+version: "3.9"
+services:
+  api:
+    build:
+      context: "C:\\Users\\jakub\\Desktop\\HappyTeamZadanie\\MallorcaTeslaRent\\MallorcaTeslaRentBE\\\
+        MallorcaTeslaRent\\MallorcaTeslaRent.Api"
+      dockerfile: "Dockerfile"
+      target: "domain-build"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/MallorcaTeslaRent.Api.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+      NUGET_PACKAGES: "C:\\Users\\jakub\\.nuget\\packages"
+      NUGET_FALLBACK_PACKAGES: "C:\\Users\\jakub\\.nuget\\packages"
+    image: "mallorcateslarent.api:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\jakub\\.nuget\\packages:/root/.nuget/fallbackpackages"
+    - "C:\\Users\\jakub\\Desktop\\HappyTeamZadanie\\MallorcaTeslaRent\\MallorcaTeslaRentBE\\\
+      MallorcaTeslaRent\\MallorcaTeslaRent.Api:/app:rw"
+    - "C:\\Users\\jakub\\Desktop\\HappyTeamZadanie\\MallorcaTeslaRent\\MallorcaTeslaRentBE\\\
+      MallorcaTeslaRent:/src:rw"
+    working_dir: "/app"

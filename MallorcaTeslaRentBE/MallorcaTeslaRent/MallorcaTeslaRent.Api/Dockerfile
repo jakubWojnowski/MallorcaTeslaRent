@@ -1,37 +1,47 @@
-﻿# Stage 1: Build the .NET Core application
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+﻿# Stage 1: Build Domain
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /src
-COPY ["MallorcaTeslaRentBE.csproj", "./"]
-RUN dotnet restore "MallorcaTeslaRentBE.csproj"
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS domain-build
+WORKDIR /src/Domain
+COPY ["MallorcaTeslaRentBE.Domain.csproj", "./"]
+RUN dotnet restore "MallorcaTeslaRentBE.Domain.csproj"
 COPY . .
-WORKDIR "/src/"
-RUN dotnet build "MallorcaTeslaRentBE.csproj" -c Release -o /app/build
+WORKDIR "/src/Domain"
+RUN dotnet build "MallorcaTeslaRentBE.Domain.csproj" -c Release -o /app/domain
 
-# Stage 2: Publish the .NET Core application
-FROM build AS publish
-RUN dotnet publish "MallorcaTeslaRentBE.csproj" -c Release -o /app/publish /p:UseAppHost=false
+# Stage 2: Build Infrastructure
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS infrastructure-build
+WORKDIR /src/Infrastructure
+COPY ["MallorcaTeslaRentBE.Infrastructure.csproj", "./"]
+RUN dotnet restore "MallorcaTeslaRentBE.Infrastructure.csproj"
+COPY . .
+WORKDIR "/src/Infrastructure"
+RUN dotnet build "MallorcaTeslaRentBE.Infrastructure.csproj" -c Release -o /app/infrastructure
 
-# Stage 3: Build the MSSQL image
-FROM mcr.microsoft.com/mssql/server:2019-latest AS sql
-ENV SA_PASSWORD=YourStrongPassword
-ENV ACCEPT_EULA=Y
+# Stage 3: Build Application
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS application-build
+WORKDIR /src/Application
+COPY ["MallorcaTeslaRentBE.Application.csproj", "./"]
+RUN dotnet restore "MallorcaTeslaRentBE.Application.csproj"
+COPY . .
+WORKDIR "/src/Application"
+RUN dotnet build "MallorcaTeslaRentBE.Application.csproj" -c Release -o /app/application
+
+# Stage 4: Build API
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS api-build
+WORKDIR /src/API
+COPY ["MallorcaTeslaRentBE.Api.csproj", "./"]
+RUN dotnet restore "MallorcaTeslaRentBE.Api.csproj"
+COPY . .
+WORKDIR "/src/API"
+RUN dotnet build "MallorcaTeslaRentBE.Api.csproj" -c Release -o /app/api
+
+# Stage 5: Publish API
+FROM api-build AS api-publish
+RUN dotnet publish "MallorcaTeslaRentBE.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+# Stage 6: Final
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
-
-# Add your SQL scripts, if any
-COPY ./sql-scripts/ /app
-
-# You can also execute SQL scripts if needed
-# RUN /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrongPassword -d master -i /app/your-script.sql
-
-# Stage 4: Create the final image with the .NET Core app and MSSQL
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
-COPY --from=sql /app /var/opt/mssql/data
-
-ENTRYPOINT ["dotnet", "MallorcaTeslaRentBE.dll"]
+COPY --from=api-publish /app/publish .
+ENTRYPOINT ["dotnet", "MallorcaTeslaRentBE.Api.dll"]
