@@ -6,5 +6,6 @@ public class RentalLocation
     public string Name { get; set; }
     public string Address { get; set; }
     
-    public List<Reservation> Reservations { get; set; }
+    public virtual ICollection<Car>? Cars { get; set; }
+    
 }

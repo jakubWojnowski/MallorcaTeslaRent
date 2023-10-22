@@ -7,7 +7,6 @@ public class User
     public string Password { get; set; }
     public string Name { get; set; }
     public string Surname { get; set; }
-    
-    public List<Reservation> Reservations { get; set; }
-    
+
+    public virtual ICollection<Reservation>? Reservations { get; set; }
 }

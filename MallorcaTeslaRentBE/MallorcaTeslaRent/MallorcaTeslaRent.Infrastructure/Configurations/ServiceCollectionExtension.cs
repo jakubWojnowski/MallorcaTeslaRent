@@ -1,4 +1,6 @@
-﻿using MallorcaTeslaRent.Infrastructure.Persistence;
+﻿using MallorcaTeslaRent.Domain.Interfaces;
+using MallorcaTeslaRent.Infrastructure.Persistence;
+using MallorcaTeslaRent.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +15,7 @@ public static class ServiceCollectionExtension
         {
             options.UseSqlServer(configuration.GetConnectionString("MallorcaTeslaRent"));
         });
+        services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericRepository<,>));
         return services;
     }
 }

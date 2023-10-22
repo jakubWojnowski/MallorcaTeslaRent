@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MallorcaTeslaRent.Infrastructure.Migrations
 {
     [DbContext(typeof(MallorcaTeslaRentDbContext))]
-    [Migration("20231020171810_Initial")]
+    [Migration("20231022115430_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -50,7 +50,12 @@ namespace MallorcaTeslaRent.Infrastructure.Migrations
                         .HasPrecision(10, 2)
                         .HasColumnType("decimal(10,2)");
 
+                    b.Property<Guid>("RentalLocationId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("RentalLocationId");
 
                     b.ToTable("Cars");
                 });
@@ -86,9 +91,6 @@ namespace MallorcaTeslaRent.Infrastructure.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("RentalLocationId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
@@ -102,8 +104,6 @@ namespace MallorcaTeslaRent.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CarId");
-
-                    b.HasIndex("RentalLocationId");
 
                     b.HasIndex("UserId");
 
@@ -137,17 +137,22 @@ namespace MallorcaTeslaRent.Infrastructure.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("MallorcaTeslaRent.Domain.Entities.Reservation", b =>
+            modelBuilder.Entity("MallorcaTeslaRent.Domain.Entities.Car", b =>
                 {
-                    b.HasOne("MallorcaTeslaRent.Domain.Entities.Car", "Car")
-                        .WithMany("Reservations")
-                        .HasForeignKey("CarId")
+                    b.HasOne("MallorcaTeslaRent.Domain.Entities.RentalLocation", "RentalLocation")
+                        .WithMany("Cars")
+                        .HasForeignKey("RentalLocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MallorcaTeslaRent.Domain.Entities.RentalLocation", "RentalLocation")
-                        .WithMany("Reservations")
-                        .HasForeignKey("RentalLocationId")
+                    b.Navigation("RentalLocation");
+                });
+
+            modelBuilder.Entity("MallorcaTeslaRent.Domain.Entities.Reservation", b =>
+                {
+                    b.HasOne("MallorcaTeslaRent.Domain.Entities.Car", "Car")
+                        .WithMany()
+                        .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -159,19 +164,12 @@ namespace MallorcaTeslaRent.Infrastructure.Migrations
 
                     b.Navigation("Car");
 
-                    b.Navigation("RentalLocation");
-
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("MallorcaTeslaRent.Domain.Entities.Car", b =>
-                {
-                    b.Navigation("Reservations");
                 });
 
             modelBuilder.Entity("MallorcaTeslaRent.Domain.Entities.RentalLocation", b =>
                 {
-                    b.Navigation("Reservations");
+                    b.Navigation("Cars");
                 });
 
             modelBuilder.Entity("MallorcaTeslaRent.Domain.Entities.User", b =>
