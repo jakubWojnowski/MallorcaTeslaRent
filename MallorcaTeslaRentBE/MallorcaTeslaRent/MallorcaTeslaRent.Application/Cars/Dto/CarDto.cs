@@ -1,4 +1,4 @@
-﻿namespace MallorcaTeslaRent.Application.Car.Dto;
+﻿namespace MallorcaTeslaRent.Application.Cars.Dto;
 
 public class CarDto
 {

@@ -10,4 +10,5 @@ public interface IGenericRepository<TEntity, in TKey> where TEntity : class
     Task UpdateAsync(TEntity entity);
     Task DeleteAsync(TEntity entity);
     Task<TEntity?>  GetNextRecordAsync(Expression<Func<TEntity, bool>>filter);
+    public Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate);
 }

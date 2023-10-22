@@ -7,16 +7,16 @@ namespace MallorcaTeslaRent.Application.RentalLocations.Commands.Delete;
 
 public class DeleteRentalLocationCommandHandler : IRequestHandler<DeleteRentalLocationCommand>
 {
-    private readonly IGenericRepository<RentalLocation, Guid> _genericRepository;
+    private readonly IGenericRepository<RentalLocation, Guid> _rentalLocationRepository;
 
-    public DeleteRentalLocationCommandHandler(IGenericRepository<RentalLocation, Guid> genericRepository)
+    public DeleteRentalLocationCommandHandler(IGenericRepository<RentalLocation, Guid> rentalLocationRepository)
     {
-        _genericRepository = genericRepository;
+        _rentalLocationRepository = rentalLocationRepository;
     }
     public async Task Handle(DeleteRentalLocationCommand request, CancellationToken cancellationToken)
     {
-       var rentalLocation = await _genericRepository.GetByIdAsync(request.Id);
+       var rentalLocation = await _rentalLocationRepository.GetByIdAsync(request.Id);
        if (rentalLocation is null) throw new NotFoundException($"Rental location with id: {request.Id} not found");
-      await _genericRepository.DeleteAsync(rentalLocation);
+      await _rentalLocationRepository.DeleteAsync(rentalLocation);
     }
 }

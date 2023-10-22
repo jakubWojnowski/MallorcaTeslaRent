@@ -1,4 +1,4 @@
-﻿using MallorcaTeslaRent.Application.Car.Dto;
+﻿using MallorcaTeslaRent.Application.Cars.Dto;
 
 namespace MallorcaTeslaRent.Application.RentalLocations.Dto;
 

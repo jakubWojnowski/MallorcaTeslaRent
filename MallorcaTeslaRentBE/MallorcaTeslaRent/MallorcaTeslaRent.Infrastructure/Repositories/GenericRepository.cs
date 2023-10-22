@@ -52,4 +52,8 @@ internal class GenericRepository<TEntity, TKey> : IGenericRepository<TEntity, TK
     {
         return await _entities.Where(filter).FirstOrDefaultAsync();
     }
+    public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate)
+    {
+        return await _dbContext.Set<TEntity>().AnyAsync(predicate);
+    }
 }

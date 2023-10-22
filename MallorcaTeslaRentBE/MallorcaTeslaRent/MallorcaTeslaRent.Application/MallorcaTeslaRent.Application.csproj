@@ -11,10 +11,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="FluentValidation" Version="11.8.0" />
+      <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
       <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.8.0" />
       <PackageReference Include="MediatR" Version="12.1.1" />
       <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="7.0.12" />
+      <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
       <PackageReference Include="Riok.Mapperly" Version="3.2.0" />
     </ItemGroup>
 
@@ -26,13 +27,11 @@
       <Folder Include="Reservations\Mappings\" />
       <Folder Include="Reservations\Query\GetList\" />
       <Folder Include="Reservations\Query\Get\" />
-      <Folder Include="User\Commands\Create\" />
-      <Folder Include="User\Commands\Delete\" />
-      <Folder Include="User\Commands\Update\" />
-      <Folder Include="User\Dto\" />
-      <Folder Include="User\Mappings\" />
-      <Folder Include="User\Query\GetList\" />
-      <Folder Include="User\Query\Get\" />
+      <Folder Include="Users\Commands\Login\" />
+      <Folder Include="Users\Commands\Delete\" />
+      <Folder Include="Users\Commands\Update\" />
+      <Folder Include="Users\Query\GetList\" />
+      <Folder Include="Users\Query\Get\" />
     </ItemGroup>
 
 </Project>

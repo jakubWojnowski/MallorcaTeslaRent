@@ -7,21 +7,21 @@ namespace MallorcaTeslaRent.Application.RentalLocations.Commands.Create;
 
 public class CreateRentalLocationCommandHandler : IRequestHandler<CreateRentalLocationCommand, Guid>
 {
-    private readonly IGenericRepository<RentalLocation, Guid> _genericRepository;
-    private static readonly RentalLocationMappings _mapper = new();
+    private readonly IGenericRepository<RentalLocation, Guid> _rentalLocationRepository;
+    private static readonly RentalLocationMappings Mapper = new();
 
-    public CreateRentalLocationCommandHandler(IGenericRepository<RentalLocation, Guid> genericRepository)
+    public CreateRentalLocationCommandHandler(IGenericRepository<RentalLocation, Guid> rentalLocationRepository)
     {
-        _genericRepository = genericRepository;
+        _rentalLocationRepository = rentalLocationRepository;
     }
 
     public async Task<Guid> Handle(CreateRentalLocationCommand request, CancellationToken cancellationToken)
     {
-        var rentalLocation = _mapper.MapRentalLocationDtoToRentalLocation(request.RentalLocationDto);
-        if (request.RentalLocationDto.Name == _genericRepository
+        var rentalLocation = Mapper.MapRentalLocationDtoToRentalLocation(request.RentalLocationDto);
+        if (request.RentalLocationDto.Name == _rentalLocationRepository
                 .GetNextRecordAsync(n => n.Name == request.RentalLocationDto.Name).Result
                 ?.Name) throw new Exception("Rental location already exists");
-        await _genericRepository.AddAsync(rentalLocation);
+        await _rentalLocationRepository.AddAsync(rentalLocation);
         return rentalLocation.Id;
     }
 }

@@ -1,16 +1,16 @@
-﻿using MallorcaTeslaRent.Application.Car.Dto;
+﻿using MallorcaTeslaRent.Application.Cars.Dto;
 using Riok.Mapperly.Abstractions;
 using MallorcaTeslaRent.Domain.Entities;
 
-namespace MallorcaTeslaRent.Application.Car.Mappings;
+namespace MallorcaTeslaRent.Application.Cars.Mappings;
 [Mapper]
 public partial class CarMappings 
 {
-    public partial Domain.Entities.Car MapCarDtoToCar(CarDto carDto);
-    public partial CarDto MapCarToCarDto(Domain.Entities.Car car);
+    public partial Car MapCarDtoToCar(CarDto carDto);
+    public partial CarDto MapCarToCarDto(Car car);
     public partial IEnumerable<CarDto> MapCarDtosToCars(IEnumerable<Domain.Entities.Car> car);
 
-    public Domain.Entities.Car UpdateCar(CarDto carDto,Domain.Entities.Car car)
+    public Car UpdateCar(CarDto carDto,Car car)
     {
         car.Name = carDto.Name;
         car.Model = carDto.Model;

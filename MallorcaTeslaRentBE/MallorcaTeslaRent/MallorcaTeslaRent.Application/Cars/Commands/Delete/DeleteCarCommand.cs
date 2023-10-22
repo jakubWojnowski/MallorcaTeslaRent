@@ -1,5 +1,5 @@
 ﻿using MediatR;
 
-namespace MallorcaTeslaRent.Application.Car.Commands.Delete;
+namespace MallorcaTeslaRent.Application.Cars.Commands.Delete;
 
 public record DeleteCarCommand(Guid Id) : IRequest;

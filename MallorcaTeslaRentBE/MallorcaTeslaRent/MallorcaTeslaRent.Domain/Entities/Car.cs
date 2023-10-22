@@ -10,5 +10,7 @@ public class Car
     public int NumberOfSeats { get; set; }
     
     public Guid RentalLocationId { get; set; }
+    public Guid? ReservationId { get; set; }
     public virtual RentalLocation RentalLocation { get; set; }
+    public virtual Reservation Reservation { get; set; }
 }
