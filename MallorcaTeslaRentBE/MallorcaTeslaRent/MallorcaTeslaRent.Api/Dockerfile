@@ -1,5 +1,4 @@
-﻿# Stage 1: Build Domain
-ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
+﻿ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS domain-build
 WORKDIR /src/Domain
@@ -9,7 +8,6 @@ COPY . .
 WORKDIR "/src/Domain"
 RUN dotnet build "MallorcaTeslaRentBE.Domain.csproj" -c Release -o /app/domain
 
-# Stage 2: Build Infrastructure
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS infrastructure-build
 WORKDIR /src/Infrastructure
 COPY ["MallorcaTeslaRentBE.Infrastructure.csproj", "./"]
@@ -18,7 +16,6 @@ COPY . .
 WORKDIR "/src/Infrastructure"
 RUN dotnet build "MallorcaTeslaRentBE.Infrastructure.csproj" -c Release -o /app/infrastructure
 
-# Stage 3: Build Application
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS application-build
 WORKDIR /src/Application
 COPY ["MallorcaTeslaRentBE.Application.csproj", "./"]
@@ -27,7 +24,6 @@ COPY . .
 WORKDIR "/src/Application"
 RUN dotnet build "MallorcaTeslaRentBE.Application.csproj" -c Release -o /app/application
 
-# Stage 4: Build API
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS api-build
 WORKDIR /src/API
 COPY ["MallorcaTeslaRentBE.Api.csproj", "./"]
@@ -36,11 +32,9 @@ COPY . .
 WORKDIR "/src/API"
 RUN dotnet build "MallorcaTeslaRentBE.Api.csproj" -c Release -o /app/api
 
-# Stage 5: Publish API
 FROM api-build AS api-publish
 RUN dotnet publish "MallorcaTeslaRentBE.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
-# Stage 6: Final
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 COPY --from=api-publish /app/publish .

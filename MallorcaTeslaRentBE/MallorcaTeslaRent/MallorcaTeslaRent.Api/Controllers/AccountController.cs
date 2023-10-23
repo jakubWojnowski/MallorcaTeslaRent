@@ -1,4 +1,5 @@
-﻿using MallorcaTeslaRent.Application.Users.Commands.Register;
+﻿using MallorcaTeslaRent.Application.Users.Commands.Login;
+using MallorcaTeslaRent.Application.Users.Commands.Register;
 using MallorcaTeslaRent.Application.Users.Dto;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -20,5 +21,12 @@ public class AccountController : ControllerBase
     {
         await _mediator.Send(new RegisterUserCommand(registerUserDto));
         return Ok();
+    }
+    
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] LoginUserDto loginUserDto)
+    {
+        var token = await _mediator.Send(new LoginUserCommand(loginUserDto));
+        return Ok(token);
     }
 }

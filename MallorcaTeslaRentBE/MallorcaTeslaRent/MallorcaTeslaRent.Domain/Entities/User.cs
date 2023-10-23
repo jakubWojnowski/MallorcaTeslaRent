@@ -9,6 +9,7 @@ public class User
     public string HashedPassword { get; set; }
     public string Name { get; set; }
     public string Surname { get; set; }
+    public DateTime DateOfBirth { get; set; }
     public Role Role { get; set; }
 
     public virtual ICollection<Reservation>? Reservations { get; set; }

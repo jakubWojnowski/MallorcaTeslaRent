@@ -11,7 +11,7 @@ public static class Extension
         => services.RegisterUserValidators();
 
     private static IServiceCollection RegisterUserValidators(this IServiceCollection services)
-        => services.AddScoped<IValidator<RegisterUserDto>, RegisterUserDtoValidator>();
+        => services.AddScoped<IValidator<RegisterUserDto>, RegisterUserDtoValidator>().AddScoped<IValidator<LoginUserDto>, LoginUserDtoValidator>();
     
     // private static IServiceCollection RegisterCarsValidators(this IServiceCollection services)
     //     => services.AddScoped<IValidator<RegisterUserDto>, RegisterUserDtoValidator>();

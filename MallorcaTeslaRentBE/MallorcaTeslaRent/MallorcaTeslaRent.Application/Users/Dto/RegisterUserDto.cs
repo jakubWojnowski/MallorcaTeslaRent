@@ -10,5 +10,6 @@ public class RegisterUserDto
     public string ConfirmPassword { get; set; }
     public string Name { get; set; }
     public string Surname { get; set; }
+    public DateTime DateOfBirth { get; set; }
     public Role Role { get; set; }
 }
