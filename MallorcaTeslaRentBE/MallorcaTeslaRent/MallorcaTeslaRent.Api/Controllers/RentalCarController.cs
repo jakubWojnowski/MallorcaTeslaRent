@@ -3,12 +3,14 @@ using MallorcaTeslaRent.Application.Cars.Query.GetList;
 using MallorcaTeslaRent.Application.RentalLocations.Query.Get;
 using MallorcaTeslaRent.Application.RentalLocations.Query.GetList;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MallorcaTeslaRent.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class RentalCarController : ControllerBase
 {
     private readonly IMediator _mediator;

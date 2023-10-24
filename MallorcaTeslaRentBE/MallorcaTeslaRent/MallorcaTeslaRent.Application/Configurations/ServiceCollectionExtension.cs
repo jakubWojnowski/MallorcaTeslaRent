@@ -2,6 +2,7 @@
 using FluentValidation;
 using MallorcaTeslaRent.Application.Configurations.ValidatorConfiguration;
 using MallorcaTeslaRent.Application.Users.Dto;
+using MallorcaTeslaRent.Application.Users.UserContext;
 using MallorcaTeslaRent.Application.Users.Validators;
 using MallorcaTeslaRent.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
@@ -13,6 +14,9 @@ public static class ServiceCollectionExtension
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
+        services.AddHttpContextAccessor();
+        services.AddScoped<IUserContext, UserContext>();
+
         services.AddMediatR(cfg => { cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()); });
         services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 

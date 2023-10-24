@@ -7,12 +7,14 @@ using MallorcaTeslaRent.Application.RentalLocations.Commands.Delete;
 using MallorcaTeslaRent.Application.RentalLocations.Commands.Update;
 using MallorcaTeslaRent.Application.RentalLocations.Dto;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MallorcaTeslaRent.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize(Roles = "Admin")]
 public class AdminController : ControllerBase
 {
     private readonly IMediator _mediator;
