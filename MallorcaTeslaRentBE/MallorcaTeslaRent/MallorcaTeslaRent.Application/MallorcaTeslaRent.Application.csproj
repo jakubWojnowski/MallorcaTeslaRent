@@ -27,10 +27,6 @@
       <Folder Include="Reservations\Mappings\" />
       <Folder Include="Reservations\Query\GetList\" />
       <Folder Include="Reservations\Query\Get\" />
-      <Folder Include="Users\Commands\Delete\" />
-      <Folder Include="Users\Commands\Update\" />
-      <Folder Include="Users\Query\GetList\" />
-      <Folder Include="Users\Query\Get\" />
     </ItemGroup>
 
 </Project>

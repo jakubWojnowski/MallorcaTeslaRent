@@ -8,7 +8,7 @@ public partial class CarMappings
 {
     public partial Car MapCarDtoToCar(CarDto carDto);
     public partial CarDto MapCarToCarDto(Car car);
-    public partial IEnumerable<CarDto> MapCarDtosToCars(IEnumerable<Domain.Entities.Car> car);
+    public partial IEnumerable<CarDto> MapCarDtosToCars(IEnumerable<Car> car);
 
     public Car UpdateCar(CarDto carDto,Car car)
     {
