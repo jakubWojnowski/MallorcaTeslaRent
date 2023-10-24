@@ -23,6 +23,7 @@ public class UserContext : IUserContext
         var enumerable = claims as Claim[] ?? claims.ToArray();
         var fullName = enumerable.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
         var roles = enumerable.Where(x => x.Type == ClaimTypes.Role).Select(x => x.Value);
-        return new CurrentUser(fullName, roles);
+        var id = enumerable.First(x => x.Type == ClaimTypes.NameIdentifier).Value;
+        return new CurrentUser(fullName, roles, id);
     }
 }

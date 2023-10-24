@@ -2,6 +2,10 @@
 using MallorcaTeslaRent.Application.Cars.Query.GetList;
 using MallorcaTeslaRent.Application.RentalLocations.Query.Get;
 using MallorcaTeslaRent.Application.RentalLocations.Query.GetList;
+using MallorcaTeslaRent.Application.Reservations.Commands.Create;
+using MallorcaTeslaRent.Application.Reservations.Dto;
+using MallorcaTeslaRent.Application.Reservations.Query.Get;
+using MallorcaTeslaRent.Application.Reservations.Query.GetList;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -54,5 +58,23 @@ public class RentalCarController : ControllerBase
         var cars = await _mediator.Send(new GetAllCarsQuery());
         return Ok(cars);
     }
+    
+    [HttpPost("Reservation")]
+    public async Task<ActionResult> CreateReservation([FromBody] ReservationDto reservationDto)
+    {
+        var reservationId = await _mediator.Send(new CreateReservationCommand(reservationDto));
+        return Ok(reservationId);
+    }
+    
+    
+  
+    
+    // [HttpGet("Reservations/{userId}")]
+    // public async Task<ActionResult> GetAllReservationsForUser([FromRoute] Guid userId)
+    // {
+    //     var reservations = await _mediator.Send(new GetAllReservationsForUserQuery(userId));
+    //     return Ok(reservations);
+    // }
+
 
 }

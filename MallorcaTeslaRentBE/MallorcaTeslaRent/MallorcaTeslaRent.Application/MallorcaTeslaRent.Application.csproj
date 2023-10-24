@@ -19,14 +19,4 @@
       <PackageReference Include="Riok.Mapperly" Version="3.2.0" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Reservations\Commands\Create\" />
-      <Folder Include="Reservations\Commands\Delete\" />
-      <Folder Include="Reservations\Commands\Update\" />
-      <Folder Include="Reservations\Dto\" />
-      <Folder Include="Reservations\Mappings\" />
-      <Folder Include="Reservations\Query\GetList\" />
-      <Folder Include="Reservations\Query\Get\" />
-    </ItemGroup>
-
 </Project>
