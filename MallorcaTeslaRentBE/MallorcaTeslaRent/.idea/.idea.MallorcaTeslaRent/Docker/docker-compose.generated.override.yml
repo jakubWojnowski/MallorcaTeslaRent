@@ -4,9 +4,9 @@ services:
   api:
     build:
       context: "C:\\Users\\jakub\\Desktop\\HappyTeamZadanie\\MallorcaTeslaRent\\MallorcaTeslaRentBE\\\
-        MallorcaTeslaRent\\MallorcaTeslaRent.Api"
+        MallorcaTeslaRent\\src\\MallorcaTeslaRent.Api"
       dockerfile: "Dockerfile"
-      target: "domain-build"
+      target: "build"
     command: []
     entrypoint:
     - "dotnet"
@@ -21,7 +21,7 @@ services:
     volumes:
     - "C:\\Users\\jakub\\.nuget\\packages:/root/.nuget/fallbackpackages"
     - "C:\\Users\\jakub\\Desktop\\HappyTeamZadanie\\MallorcaTeslaRent\\MallorcaTeslaRentBE\\\
-      MallorcaTeslaRent\\MallorcaTeslaRent.Api:/app:rw"
+      MallorcaTeslaRent\\src\\MallorcaTeslaRent.Api:/app:rw"
     - "C:\\Users\\jakub\\Desktop\\HappyTeamZadanie\\MallorcaTeslaRent\\MallorcaTeslaRentBE\\\
       MallorcaTeslaRent:/src:rw"
     working_dir: "/app"
