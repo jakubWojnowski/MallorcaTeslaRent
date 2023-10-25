@@ -9,10 +9,10 @@ namespace MallorcaTeslaRent.Application.Cars.Query.Get;
 
 public class GetCarByIdQueryHandler : IRequestHandler<GetCarByIdQuery, CarDto>
 {
-    private readonly IGenericRepository<Car, Guid> _carRepository;
+    private readonly ICarRepository _carRepository;
     private static readonly CarMappings Mapper = new();
 
-    public GetCarByIdQueryHandler(IGenericRepository<Car, Guid> carRepository)
+    public GetCarByIdQueryHandler(ICarRepository carRepository)
     {
         _carRepository = carRepository;
     }

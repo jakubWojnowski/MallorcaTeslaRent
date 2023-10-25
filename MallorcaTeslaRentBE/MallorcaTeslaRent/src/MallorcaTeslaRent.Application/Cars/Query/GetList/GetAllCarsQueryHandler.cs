@@ -8,10 +8,10 @@ namespace MallorcaTeslaRent.Application.Cars.Query.GetList;
 
 public class GetAllCarsQueryHandler : IRequestHandler<GetAllCarsQuery, IEnumerable<CarDto>>
 {
-    private readonly IGenericRepository<Car, Guid> _carRepository;
+    private readonly ICarRepository _carRepository;
     private static readonly CarMappings Mapper = new();
 
-    public GetAllCarsQueryHandler(IGenericRepository<Car, Guid> carRepository)
+    public GetAllCarsQueryHandler(ICarRepository carRepository)
     {
         _carRepository = carRepository;
     }

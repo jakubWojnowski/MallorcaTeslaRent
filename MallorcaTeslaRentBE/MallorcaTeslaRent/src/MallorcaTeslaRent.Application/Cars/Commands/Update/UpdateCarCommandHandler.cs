@@ -8,10 +8,10 @@ namespace MallorcaTeslaRent.Application.Cars.Commands.Update;
 
 public class UpdateCarCommandHandler : IRequestHandler<UpdateCarCommand>
 {
-    private readonly IGenericRepository<Car, Guid> _carRepository;
+    private readonly ICarRepository _carRepository;
     private static readonly CarMappings Mapper = new();
 
-    public UpdateCarCommandHandler(IGenericRepository<Car, Guid> carRepository)
+    public UpdateCarCommandHandler(ICarRepository carRepository)
     {
         _carRepository = carRepository;
     }

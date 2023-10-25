@@ -43,6 +43,7 @@ public static class ServiceCollectionExtension
         services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericRepository<,>))
             .AddScoped<IRentalLocationRepository, RentalLocationRepository>()
             .AddScoped<IUserRepository, UserRepository>()
+            .AddScoped<ICarRepository, CarRepository>()
             .AddScoped<IJwtProvider, JwtProvider>();
         
         return services;

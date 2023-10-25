@@ -18,16 +18,18 @@ public class GenericRepository<TEntity, TKey> : IGenericRepository<TEntity, TKey
 
     public async Task<TEntity?> GetByIdAsync(TKey id, CancellationToken ct) => await _dbContext.Set<TEntity>().FindAsync(new object?[] { id, ct }, cancellationToken: ct);
 
-    public async Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken ct, Expression<Func<TEntity, object>>? include = null)
+    public async Task<IQueryable<TEntity>> GetAllAsync(CancellationToken ct, Expression<Func<TEntity, object>>? include = null)
     {
-       var query = _dbContext.Set<TEntity>();
+        IQueryable<TEntity> query = _dbContext.Set<TEntity>();
 
         if (include != null)
         {
-            query.Include(include);
+           query = query.Include(include);
         }
 
-        return await query.ToListAsync(ct);
+        var result = await query.ToListAsync(ct);
+        return result.AsQueryable();
+
     }
     public async Task<Guid> AddAsync(TEntity entity, CancellationToken ct)
     {

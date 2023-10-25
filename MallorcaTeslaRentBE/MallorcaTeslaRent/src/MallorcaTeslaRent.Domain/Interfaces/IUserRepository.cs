@@ -6,7 +6,7 @@ namespace MallorcaTeslaRent.Domain.Interfaces;
 public interface IUserRepository
 {
     Task<User?> GetByIdAsync(Guid id, CancellationToken ct);
-    Task<IEnumerable<User>> GetAllAsync(CancellationToken ct, Expression<Func<User, object>>? include = null);
+    Task<IQueryable<User>> GetAllAsync(CancellationToken ct, Expression<Func<User, object>>? include = null);
     Task<Guid> AddAsync(User entity, CancellationToken ct);
     Task UpdateAsync(User entity, CancellationToken ct);
     Task DeleteAsync(User entity,  CancellationToken ct);

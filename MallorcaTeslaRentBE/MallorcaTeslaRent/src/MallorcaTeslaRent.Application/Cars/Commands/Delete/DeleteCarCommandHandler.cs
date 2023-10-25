@@ -8,10 +8,10 @@ namespace MallorcaTeslaRent.Application.Cars.Commands.Delete;
 
 public class DeleteCarCommandHandler : IRequestHandler<DeleteCarCommand>
 {
-    private readonly IGenericRepository<Car, Guid> _carRepository;
+    private readonly ICarRepository _carRepository;
     private static readonly CarMappings Mapper = new();
 
-    public DeleteCarCommandHandler(IGenericRepository<Car, Guid> carRepository)
+    public DeleteCarCommandHandler(ICarRepository carRepository)
     {
         _carRepository = carRepository;
     }

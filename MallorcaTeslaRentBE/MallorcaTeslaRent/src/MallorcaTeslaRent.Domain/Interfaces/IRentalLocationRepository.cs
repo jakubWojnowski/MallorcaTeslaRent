@@ -7,7 +7,7 @@ public interface IRentalLocationRepository
 {
     Task<RentalLocation?> GetRentalLocationByNameAsync(string name, CancellationToken ct);
     Task<RentalLocation?> GetByIdAsync(Guid id, CancellationToken ct);
-    Task<IEnumerable<RentalLocation>> GetAllAsync(CancellationToken ct, Expression<Func<RentalLocation, object>>? include = null);
+    Task<IQueryable<RentalLocation>> GetAllAsync(CancellationToken ct, Expression<Func<RentalLocation, object>>? include = null);
     Task<Guid> AddAsync(RentalLocation entity, CancellationToken ct);
     Task UpdateAsync(RentalLocation entity, CancellationToken ct);
     Task DeleteAsync(RentalLocation entity,  CancellationToken ct);
