@@ -8,11 +8,11 @@ namespace MallorcaTeslaRent.Application.RentalLocations.Commands.Create;
 
 public class CreateRentalLocationCommandHandler : IRequestHandler<CreateRentalLocationCommand, Guid>
 {
-    private readonly IGenericRepository<RentalLocation, Guid> _rentalLocationRepository;
+    private readonly IRentalLocationRepository _rentalLocationRepository;
     private readonly IRentalLocationRepository _repo;
     private static readonly RentalLocationMappings Mapper = new();
 
-    public CreateRentalLocationCommandHandler(IGenericRepository<RentalLocation, Guid> rentalLocationRepository, IRentalLocationRepository repo)
+    public CreateRentalLocationCommandHandler(IRentalLocationRepository rentalLocationRepository, IRentalLocationRepository repo)
     {
         _rentalLocationRepository = rentalLocationRepository;
         _repo = repo;

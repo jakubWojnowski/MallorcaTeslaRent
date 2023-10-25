@@ -44,6 +44,7 @@ public static class ServiceCollectionExtension
             .AddScoped<IRentalLocationRepository, RentalLocationRepository>()
             .AddScoped<IUserRepository, UserRepository>()
             .AddScoped<ICarRepository, CarRepository>()
+            .AddScoped<IReservationRepository, ReservationRepository>()
             .AddScoped<IJwtProvider, JwtProvider>();
         
         return services;

@@ -8,10 +8,10 @@ namespace MallorcaTeslaRent.Application.Reservations.Query.GetList;
 
 public class GetAllReservationsQueryHandler : IRequestHandler<GetAllReservationsQuery, IEnumerable<ReservationDto>>
 {
-    private readonly IGenericRepository<Reservation, Guid> _reservationRepository;
+    private readonly IReservationRepository _reservationRepository;
     private static readonly ReservationMappings Mapper = new();
 
-    public GetAllReservationsQueryHandler(IGenericRepository<Reservation, Guid> reservationRepository)
+    public GetAllReservationsQueryHandler(IReservationRepository reservationRepository)
     {
         _reservationRepository = reservationRepository;
     }

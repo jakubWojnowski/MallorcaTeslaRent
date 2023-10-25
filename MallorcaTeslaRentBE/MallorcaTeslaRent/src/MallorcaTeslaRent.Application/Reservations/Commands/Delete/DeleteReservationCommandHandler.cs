@@ -6,9 +6,9 @@ namespace MallorcaTeslaRent.Application.Reservations.Commands.Delete;
 
 public class DeleteReservationCommandHandler : IRequestHandler<DeleteReservationCommand>
 {
-    private readonly IGenericRepository<Reservation, Guid> _reservationRepository;
+    private readonly IReservationRepository _reservationRepository;
 
-    public DeleteReservationCommandHandler(IGenericRepository<Reservation,Guid> reservationRepository)
+    public DeleteReservationCommandHandler(IReservationRepository reservationRepository)
     {
         _reservationRepository = reservationRepository;
     }

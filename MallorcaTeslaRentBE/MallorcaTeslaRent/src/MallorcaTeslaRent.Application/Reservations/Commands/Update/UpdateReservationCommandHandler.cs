@@ -7,10 +7,10 @@ namespace MallorcaTeslaRent.Application.Reservations.Commands.Update;
 
 public class UpdateReservationCommandHandler : IRequestHandler<UpdateReservationCommand, Guid>
 {
-    private readonly IGenericRepository<Reservation, Guid> _reservationRepository;
+    private readonly IReservationRepository _reservationRepository;
     private static readonly ReservationMappings Mapper = new();
 
-    public UpdateReservationCommandHandler(IGenericRepository<Reservation, Guid> reservationRepository)
+    public UpdateReservationCommandHandler(IReservationRepository reservationRepository)
     {
         _reservationRepository = reservationRepository;
     }

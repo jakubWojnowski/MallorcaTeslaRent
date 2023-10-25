@@ -10,14 +10,14 @@ namespace MallorcaTeslaRent.Application.Reservations.Commands.Create;
 
 public class CreateReservationCommandHandler : IRequestHandler<CreateReservationCommand, Guid>
 {
-    private readonly IGenericRepository<Reservation, Guid> _reservationRepository;
+    private readonly IReservationRepository _reservationRepository;
     private readonly ICurrentUserService _currentUserService;
-    private readonly IGenericRepository<Car, Guid> _carRepository;
+    private readonly ICarRepository _carRepository;
     private static readonly ReservationMappings Mapper = new();
 
-    public CreateReservationCommandHandler(IGenericRepository<Reservation, Guid> reservationRepository,
+    public CreateReservationCommandHandler(IReservationRepository reservationRepository,
         ICurrentUserService currentUserService, 
-        IGenericRepository<Car, Guid> carRepository)
+        ICarRepository carRepository)
     {
         _reservationRepository = reservationRepository;
         _currentUserService = currentUserService;

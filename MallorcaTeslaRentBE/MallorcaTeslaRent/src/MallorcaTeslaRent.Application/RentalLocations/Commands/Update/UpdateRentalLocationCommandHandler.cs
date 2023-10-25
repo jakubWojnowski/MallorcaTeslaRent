@@ -8,10 +8,10 @@ namespace MallorcaTeslaRent.Application.RentalLocations.Commands.Update;
 
 public class UpdateRentalLocationCommandHandler : IRequestHandler<UpdateRentalLocationCommand, Guid>
 {
-    private readonly IGenericRepository<RentalLocation, Guid> _rentalLocationRepository;
+    private readonly IRentalLocationRepository _rentalLocationRepository;
     private static readonly RentalLocationMappings Mapper = new();
 
-    public UpdateRentalLocationCommandHandler(IGenericRepository<RentalLocation, Guid> rentalLocationRepository)
+    public UpdateRentalLocationCommandHandler(IRentalLocationRepository rentalLocationRepository)
     {
         _rentalLocationRepository = rentalLocationRepository;
     }

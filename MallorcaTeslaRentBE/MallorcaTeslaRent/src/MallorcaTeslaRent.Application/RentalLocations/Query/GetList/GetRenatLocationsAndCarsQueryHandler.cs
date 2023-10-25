@@ -9,10 +9,10 @@ namespace MallorcaTeslaRent.Application.RentalLocations.Query.GetList;
 
 public class GetRenatLocationsAndCarsQueryHandler : IRequestHandler<GetRenatLocationsAndCarsQuery, IEnumerable<RenatLocationAndCarDto>>
 {
-    private readonly IGenericRepository<RentalLocation, Guid> _rentalLocationRepository;
+    private readonly IRentalLocationRepository _rentalLocationRepository;
     private static readonly RentalLocationMappings Mapper = new();
 
-    public GetRenatLocationsAndCarsQueryHandler(IGenericRepository<RentalLocation, Guid> rentalLocationRepository)
+    public GetRenatLocationsAndCarsQueryHandler(IRentalLocationRepository rentalLocationRepository)
     {
         _rentalLocationRepository = rentalLocationRepository;
     }
