@@ -9,10 +9,10 @@ namespace MallorcaTeslaRent.Application.Users.Commands.Update;
 
 public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand>
 {
-    private readonly IGenericRepository<User, Guid> _userRepository;
+    private readonly IUserRepository _userRepository;
     private static readonly UserMappings Mapper = new();
 
-    public UpdateUserCommandHandler(IGenericRepository<User, Guid> userRepository)
+    public UpdateUserCommandHandler(IUserRepository userRepository)
     {
         _userRepository = userRepository;
     }

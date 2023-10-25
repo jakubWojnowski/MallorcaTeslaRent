@@ -8,7 +8,7 @@ namespace MallorcaTeslaRent.Application.Users.Validators;
 
 internal sealed class RegisterUserDtoValidator : AbstractValidator<RegisterUserDto>
 {
-    public RegisterUserDtoValidator(IGenericRepository<User,Guid> userRepository, CancellationToken ct = default)
+    public RegisterUserDtoValidator(IUserRepository userRepository, CancellationToken ct = default)
     {
         RuleFor(r => r.Email)
             .NotEmpty()

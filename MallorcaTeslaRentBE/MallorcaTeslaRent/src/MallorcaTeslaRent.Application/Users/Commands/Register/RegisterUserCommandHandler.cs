@@ -8,11 +8,11 @@ namespace MallorcaTeslaRent.Application.Users.Commands.Register;
 
 public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand>
 {
-    private readonly IGenericRepository<User, Guid> _userRepository;
+    private readonly IUserRepository _userRepository;
     private readonly IPasswordHasher<User> _passwordHasher;
     private static readonly UserMappings Mapper = new();
 
-    public RegisterUserCommandHandler(IGenericRepository<User, Guid> userRepository,
+    public RegisterUserCommandHandler(IUserRepository userRepository,
         IPasswordHasher<User> passwordHasher)
     {
         _userRepository = userRepository;

@@ -8,10 +8,10 @@ namespace MallorcaTeslaRent.Application.Users.Query.GetList;
 
 public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, IEnumerable<UserDto>>
 {
-    private readonly IGenericRepository<User, Guid> _userRepository;
+    private readonly IUserRepository _userRepository;
     private static readonly UserMappings Mapper = new();
 
-    public GetAllUsersQueryHandler(IGenericRepository<User,Guid> userRepository)
+    public GetAllUsersQueryHandler(IUserRepository userRepository)
     {
         _userRepository = userRepository;
     }

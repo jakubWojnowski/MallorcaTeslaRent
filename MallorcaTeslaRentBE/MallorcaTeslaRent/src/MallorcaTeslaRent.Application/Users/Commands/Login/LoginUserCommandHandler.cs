@@ -7,11 +7,11 @@ namespace MallorcaTeslaRent.Application.Users.Commands.Login;
 
 public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, string>
 {
-    private readonly IGenericRepository<User, Guid> _userRepository;
+    private readonly IUserRepository _userRepository;
     private readonly IJwtProvider _jwtProvider;
     private readonly IPasswordHasher<User> _passwordHasher;
 
-    public LoginUserCommandHandler(IGenericRepository<User, Guid> userRepository, IJwtProvider jwtProvider,
+    public LoginUserCommandHandler(IUserRepository userRepository, IJwtProvider jwtProvider,
         IPasswordHasher<User> passwordHasher)
     {
         _userRepository = userRepository;

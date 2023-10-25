@@ -9,10 +9,10 @@ namespace MallorcaTeslaRent.Application.Users.Query.Get;
 
 public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserDto>
 {
-    private readonly IGenericRepository<User, Guid> _userRepository;
+    private readonly IUserRepository _userRepository;
     private static readonly UserMappings Mapper = new();
 
-    public GetUserByIdQueryHandler(IGenericRepository<User, Guid> userRepository)
+    public GetUserByIdQueryHandler(IUserRepository userRepository)
     {
         _userRepository = userRepository;
     }

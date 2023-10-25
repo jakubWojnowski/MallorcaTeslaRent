@@ -7,9 +7,9 @@ namespace MallorcaTeslaRent.Application.Users.Commands.Delete;
 
 public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand>
 {
-    private readonly IGenericRepository<User, Guid> _userRepository;
+    private readonly IUserRepository _userRepository;
 
-    public DeleteUserCommandHandler(IGenericRepository<User, Guid> userRepository)
+    public DeleteUserCommandHandler(IUserRepository userRepository)
     {
         _userRepository = userRepository;
     }
