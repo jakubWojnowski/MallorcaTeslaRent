@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Http;
 
 namespace MallorcaTeslaRent.Application.Users.UserContext;
 
-public class UserContext : IUserContext
+public class CurrentUserService : ICurrentUserService
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public UserContext(IHttpContextAccessor httpContextAccessor)
+    public CurrentUserService(IHttpContextAccessor httpContextAccessor)
     {
         _httpContextAccessor = httpContextAccessor;
     }

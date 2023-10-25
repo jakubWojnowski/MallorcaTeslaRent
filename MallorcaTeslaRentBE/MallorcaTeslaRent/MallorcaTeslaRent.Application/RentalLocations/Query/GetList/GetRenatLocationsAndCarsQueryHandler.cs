@@ -1,6 +1,7 @@
 ﻿using MallorcaTeslaRent.Application.RentalLocations.Dto;
 using MallorcaTeslaRent.Application.RentalLocations.Mappings;
 using MallorcaTeslaRent.Domain.Entities;
+using MallorcaTeslaRent.Domain.Exceptions;
 using MallorcaTeslaRent.Domain.Interfaces;
 using MediatR;
 
@@ -17,7 +18,10 @@ public class GetRenatLocationsAndCarsQueryHandler : IRequestHandler<GetRenatLoca
     }
     public async Task<IEnumerable<RenatLocationAndCarDto>> Handle(GetRenatLocationsAndCarsQuery request, CancellationToken cancellationToken)
     {
-        var rentalLocations = await _rentalLocationRepository.GetAllAsync(include: r => r.Cars);
+        var rentalLocations = await _rentalLocationRepository.GetAllAsync(cancellationToken, include: r => r.Cars);
+        
+        if (rentalLocations is null) throw new NotFoundException("Rental locations not found");
+        
         var rentalLocationsAndCars = Mapper.MapRenatLocationAndCarDtosToRentalLocations(rentalLocations);
         return rentalLocationsAndCars;
     }

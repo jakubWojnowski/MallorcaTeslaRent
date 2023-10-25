@@ -18,8 +18,8 @@ public class DeleteCarCommandHandler : IRequestHandler<DeleteCarCommand>
 
     public async Task Handle(DeleteCarCommand request, CancellationToken cancellationToken)
     {
-        var car = await _carRepository.GetByIdAsync(request.Id);
+        var car = await _carRepository.GetByIdAsync(request.Id, cancellationToken);
         if (car is null) throw new NotFoundException($"Car od id {request.Id} does not exist!!!");
-        await _carRepository.DeleteAsync(car);
+        await _carRepository.DeleteAsync(car, cancellationToken);
     }
 }

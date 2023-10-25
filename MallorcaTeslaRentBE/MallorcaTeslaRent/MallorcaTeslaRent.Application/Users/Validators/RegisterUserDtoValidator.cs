@@ -8,14 +8,14 @@ namespace MallorcaTeslaRent.Application.Users.Validators;
 
 internal sealed class RegisterUserDtoValidator : AbstractValidator<RegisterUserDto>
 {
-    public RegisterUserDtoValidator(IGenericRepository<User,Guid> userRepository)
+    public RegisterUserDtoValidator(IGenericRepository<User,Guid> userRepository, CancellationToken ct = default)
     {
         RuleFor(r => r.Email)
             .NotEmpty()
             .EmailAddress()
             .Custom((value, context) =>
             {
-                var user = userRepository.AnyAsync(u => u.Email == value);
+                var user = userRepository.AnyAsync(u => u.Email == value, ct);
                 if (user.Result) context.AddFailure("Email", "Email already exists");
             });
         RuleFor(r => r.Password)

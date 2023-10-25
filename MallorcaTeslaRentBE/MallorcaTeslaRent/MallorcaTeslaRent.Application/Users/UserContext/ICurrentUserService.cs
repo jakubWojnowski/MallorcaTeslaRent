@@ -1,6 +1,6 @@
 ﻿namespace MallorcaTeslaRent.Application.Users.UserContext;
 
-public interface IUserContext
+public interface ICurrentUserService
 {
     CurrentUser? GetCurrentUser();
 }

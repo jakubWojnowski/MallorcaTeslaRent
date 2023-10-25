@@ -18,10 +18,10 @@ public class UpdateCarCommandHandler : IRequestHandler<UpdateCarCommand>
 
     public async Task Handle(UpdateCarCommand request, CancellationToken cancellationToken)
     {
-        var car = await _carRepository.GetByIdAsync(request.Id);
+        var car = await _carRepository.GetByIdAsync(request.Id, cancellationToken);
         if (car is null) throw new NotFoundException($"Car od id {request.Id} does not exist!!!");
         var carUpdate = Mapper.UpdateCar(request.CarDto, car);
 
-        await _carRepository.UpdateAsync(carUpdate);
+        await _carRepository.UpdateAsync(carUpdate, cancellationToken);
     }
 }

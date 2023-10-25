@@ -17,7 +17,7 @@ public class GetAllCarsQueryHandler : IRequestHandler<GetAllCarsQuery, IEnumerab
     }
     public async Task<IEnumerable<CarDto>> Handle(GetAllCarsQuery request, CancellationToken cancellationToken)
     {
-        var cars = await _carRepository.GetAllAsync();
+        var cars = await _carRepository.GetAllAsync(cancellationToken);
         return Mapper.MapCarDtosToCars(cars);
         
     }

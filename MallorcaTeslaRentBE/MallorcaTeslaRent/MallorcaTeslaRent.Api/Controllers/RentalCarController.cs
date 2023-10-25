@@ -66,15 +66,19 @@ public class RentalCarController : ControllerBase
         return Ok(reservationId);
     }
     
+    [HttpGet("Reservations")]
+    public async Task<ActionResult> GetAllReservationsForUser()
+    {
+        var reservations = await _mediator.Send(new GetAllReservationsForUserQuery());
+        return Ok(reservations);
+    }
     
-  
-    
-    // [HttpGet("Reservations/{userId}")]
-    // public async Task<ActionResult> GetAllReservationsForUser([FromRoute] Guid userId)
-    // {
-    //     var reservations = await _mediator.Send(new GetAllReservationsForUserQuery(userId));
-    //     return Ok(reservations);
-    // }
+    [HttpGet("Reservations/{carName}")]
+    public async Task<ActionResult> GetReservationByCarName([FromRoute] string carName)
+    {
+        var reservation = await _mediator.Send(new GetReservationByCarNameQuery(carName));
+        return Ok(reservation);
+    }
 
 
 }

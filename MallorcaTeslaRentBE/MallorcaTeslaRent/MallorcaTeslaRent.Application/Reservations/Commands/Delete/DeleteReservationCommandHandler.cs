@@ -14,8 +14,8 @@ public class DeleteReservationCommandHandler : IRequestHandler<DeleteReservation
     }
     public async Task Handle(DeleteReservationCommand request, CancellationToken cancellationToken)
     {
-        var reservation = await _reservationRepository.GetByIdAsync(request.Id);
+        var reservation = await _reservationRepository.GetByIdAsync(request.Id, cancellationToken);
         if (reservation is null) throw new InvalidOperationException("Reservation not found");
-        await _reservationRepository.DeleteAsync(reservation);
+        await _reservationRepository.DeleteAsync(reservation, cancellationToken);
     }
 }

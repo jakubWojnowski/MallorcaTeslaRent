@@ -17,7 +17,7 @@ public class GetAllReservationsQueryHandler : IRequestHandler<GetAllReservations
     }
     public async Task<IEnumerable<ReservationDto>> Handle(GetAllReservationsQuery request, CancellationToken cancellationToken)
     {
-        var reservations = await _reservationRepository.GetAllAsync();
+        var reservations = await _reservationRepository.GetAllAsync(cancellationToken);
         var reservationDtos = Mapper.MapReservationDtosToReservations(reservations);
         return reservationDtos;
     }

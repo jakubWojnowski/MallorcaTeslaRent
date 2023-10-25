@@ -17,7 +17,7 @@ public class GetAllRentalLocationsQueryHandler : IRequestHandler<GetAllRentalLoc
     }
     public async Task<IEnumerable<RentalLocationDto>> Handle(GetAllRentalLocationsQuery request, CancellationToken cancellationToken)
     {
-        var rentalLocations = await _rentalLocationRepository.GetAllAsync();
+        var rentalLocations = await _rentalLocationRepository.GetAllAsync(cancellationToken);
         return Mapper.MapRentalLocationDtosToRentalLocations(rentalLocations);
     }
 }

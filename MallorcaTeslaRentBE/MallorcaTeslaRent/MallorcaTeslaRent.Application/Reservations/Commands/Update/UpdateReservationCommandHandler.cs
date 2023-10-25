@@ -1,5 +1,4 @@
 ﻿using MallorcaTeslaRent.Application.Reservations.Mappings;
-using MallorcaTeslaRent.Application.Users.UserContext;
 using MallorcaTeslaRent.Domain.Entities;
 using MallorcaTeslaRent.Domain.Interfaces;
 using MediatR;
@@ -18,10 +17,10 @@ public class UpdateReservationCommandHandler : IRequestHandler<UpdateReservation
 
     public async Task<Guid> Handle(UpdateReservationCommand request, CancellationToken cancellationToken)
     {
-        var reservation = await _reservationRepository.GetByIdAsync(request.Id);
+        var reservation = await _reservationRepository.GetByIdAsync(request.Id, cancellationToken);
         if (reservation is null) throw new InvalidOperationException("Reservation not found");
         var reservationUpdate = Mapper.UpdateReservation( request.ReservationDto, reservation);
-        await _reservationRepository.UpdateAsync(reservationUpdate);
+        await _reservationRepository.UpdateAsync(reservationUpdate, cancellationToken);
         return reservationUpdate.Id;
     }
 }

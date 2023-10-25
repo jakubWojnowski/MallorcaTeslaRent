@@ -41,6 +41,7 @@ public static class ServiceCollectionExtension
             options.UseSqlServer(configuration.GetConnectionString("MallorcaTeslaRent"));
         });
         services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericRepository<,>))
+            .AddScoped<IRentalLocationRepository, RentalLocationRepository>()
             .AddScoped<IJwtProvider, JwtProvider>();
         
         return services;

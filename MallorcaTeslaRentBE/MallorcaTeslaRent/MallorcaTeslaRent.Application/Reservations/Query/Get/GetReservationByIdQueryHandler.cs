@@ -17,7 +17,7 @@ public class GetReservationByIdQueryHandler : IRequestHandler<GetReservationById
     }
     public async Task<ReservationDto> Handle(GetReservationByIdQuery request, CancellationToken cancellationToken)
     {
-        var reservation = await _reservationRepository.GetByIdAsync(request.Id);
+        var reservation = await _reservationRepository.GetByIdAsync(request.Id, cancellationToken);
         if (reservation is null) throw new InvalidOperationException("Reservation not found");
          var reservationDto = Mapper.ReservationToReservationDto(reservation);
         return reservationDto;

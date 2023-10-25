@@ -25,6 +25,6 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand>
         var hashedPassword = _passwordHasher.HashPassword(user, request.RegisterUserDto.Password);
         user.HashedPassword = hashedPassword;
 
-        await _userRepository.AddAsync(user);
+        await _userRepository.AddAsync(user, cancellationToken);
     }
 }

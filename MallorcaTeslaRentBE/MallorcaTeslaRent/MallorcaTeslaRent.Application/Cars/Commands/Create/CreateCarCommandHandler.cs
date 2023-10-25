@@ -18,7 +18,7 @@ public class CreateCarCommandHandler : IRequestHandler<CreateCarCommand, Guid>
     {
         var car =  Mapper.MapCarDtoToCar(request.CarDto);
         car.RentalLocationId = request.RentalLocationId;
-        await _carRepository.AddAsync(car);
+        await _carRepository.AddAsync(car, cancellationToken);
         return car.Id;
     }
 }

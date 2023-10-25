@@ -18,10 +18,12 @@ public class UpdateRentalLocationCommandHandler : IRequestHandler<UpdateRentalLo
 
     public async Task<Guid> Handle(UpdateRentalLocationCommand request, CancellationToken cancellationToken)
     {
-        var rentalLocation = await _rentalLocationRepository.GetByIdAsync(request.Id);
+        var rentalLocation = await _rentalLocationRepository.GetByIdAsync(request.Id, cancellationToken);
+        
         if (rentalLocation is null) throw new NotFoundException($"Rental location with id: {request.Id} not found");
+        
         var updatedRentalLocation = Mapper.UpdateRentalLocation(request.RentalLocationDto, rentalLocation);
-        await _rentalLocationRepository.UpdateAsync(updatedRentalLocation);
+        await _rentalLocationRepository.UpdateAsync(updatedRentalLocation, cancellationToken);
         return request.Id;
     }
 }

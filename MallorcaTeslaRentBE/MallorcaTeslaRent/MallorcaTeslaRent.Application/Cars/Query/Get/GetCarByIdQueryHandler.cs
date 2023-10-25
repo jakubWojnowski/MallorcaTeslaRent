@@ -19,7 +19,7 @@ public class GetCarByIdQueryHandler : IRequestHandler<GetCarByIdQuery, CarDto>
 
     public async Task<CarDto> Handle(GetCarByIdQuery request, CancellationToken cancellationToken)
     {
-        var car = await _carRepository.GetByIdAsync(request.Id);
+        var car = await _carRepository.GetByIdAsync(request.Id, cancellationToken);
         if (car is null) throw new NotFoundException($"Car od id {request.Id} does not exist!!!");
         var carDto = Mapper.MapCarToCarDto(car);
         return carDto;

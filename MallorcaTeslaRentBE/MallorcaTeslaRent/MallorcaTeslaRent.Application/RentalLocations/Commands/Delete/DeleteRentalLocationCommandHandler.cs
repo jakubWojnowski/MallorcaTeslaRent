@@ -15,8 +15,10 @@ public class DeleteRentalLocationCommandHandler : IRequestHandler<DeleteRentalLo
     }
     public async Task Handle(DeleteRentalLocationCommand request, CancellationToken cancellationToken)
     {
-       var rentalLocation = await _rentalLocationRepository.GetByIdAsync(request.Id);
+       var rentalLocation = await _rentalLocationRepository.GetByIdAsync(request.Id, cancellationToken);
+       
        if (rentalLocation is null) throw new NotFoundException($"Rental location with id: {request.Id} not found");
-      await _rentalLocationRepository.DeleteAsync(rentalLocation);
+       
+       await _rentalLocationRepository.DeleteAsync(rentalLocation, cancellationToken);
     }
 }

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MallorcaTeslaRent.Infrastructure.Repositories;
 
-internal class GenericRepository<TEntity, TKey> : IGenericRepository<TEntity, TKey> where TEntity : class
+public class GenericRepository<TEntity, TKey> : IGenericRepository<TEntity, TKey> where TEntity : class
 {
     private readonly MallorcaTeslaRentDbContext _dbContext;
     private readonly DbSet<TEntity> _entities;
@@ -16,44 +16,48 @@ internal class GenericRepository<TEntity, TKey> : IGenericRepository<TEntity, TK
         _entities = _dbContext.Set<TEntity>();
     }
 
-    public async Task<TEntity?> GetByIdAsync(TKey id) => await _dbContext.Set<TEntity>().FindAsync(id);
+    public async Task<TEntity?> GetByIdAsync(TKey id, CancellationToken ct) => await _dbContext.Set<TEntity>().FindAsync(new object?[] { id, ct }, cancellationToken: ct);
 
-    public async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, object>>? include = null)
+    public async Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken ct, Expression<Func<TEntity, object>>? include = null)
     {
-        IQueryable<TEntity> query = _dbContext.Set<TEntity>();
+       var query = _dbContext.Set<TEntity>();
 
         if (include != null)
         {
-            query = query.Include(include);
+            query.Include(include);
         }
 
-        return await query.ToListAsync();
+        return await query.ToListAsync(ct);
     }
-    public async Task<Guid> AddAsync(TEntity entity)
+    public async Task<Guid> AddAsync(TEntity entity, CancellationToken ct)
     {
-        await _dbContext.Set<TEntity>().AddAsync(entity);
-        await _dbContext.SaveChangesAsync();
+        await _dbContext.Set<TEntity>().AddAsync(entity, ct);
+        await _dbContext.SaveChangesAsync(ct);
         var property = _dbContext.Entry(entity).Property("Id");
         return (Guid)(property.CurrentValue ?? throw new InvalidOperationException());
     }
 
-    public async Task UpdateAsync(TEntity entity)
+    public async Task UpdateAsync(TEntity entity, CancellationToken ct)
     {
         _dbContext.Set<TEntity>().Update(entity);
-        await _dbContext.SaveChangesAsync();
+        await _dbContext.SaveChangesAsync(ct);
     }
 
-    public async Task DeleteAsync(TEntity entity)
+    public async Task DeleteAsync(TEntity entity,  CancellationToken ct)
     {
         _dbContext.Set<TEntity>().Remove(entity);
-        await _dbContext.SaveChangesAsync();
+        await _dbContext.SaveChangesAsync(ct);
     }
-    public async Task<TEntity?> GetNextRecordAsync(Expression<Func<TEntity, bool>> filter)
+    public async Task<TEntity?> GetRecordByFilterAsync(Expression<Func<TEntity, bool>> filter, CancellationToken ct)
     {
-        return await _entities.Where(filter).FirstOrDefaultAsync();
+        return await _entities.Where(filter).FirstOrDefaultAsync(ct);
     }
-    public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate)
+    public async Task<IEnumerable<TEntity?>> GetAllForConditionAsync(Expression<Func<TEntity, bool>> filter, CancellationToken ct)
     {
-        return await _dbContext.Set<TEntity>().AnyAsync(predicate);
+        return await _entities.Where(filter).ToListAsync(ct);
+    }
+    public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken ct)
+    {
+        return await _dbContext.Set<TEntity>().AnyAsync(predicate, ct);
     }
 }

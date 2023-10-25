@@ -15,7 +15,7 @@ public static class ServiceCollectionExtension
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
         services.AddHttpContextAccessor();
-        services.AddScoped<IUserContext, UserContext>();
+        services.AddScoped<ICurrentUserService, CurrentUserService>();
 
         services.AddMediatR(cfg => { cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()); });
         services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
