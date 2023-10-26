@@ -79,6 +79,13 @@ public class RentalCarController : ControllerBase
         var reservation = await _mediator.Send(new GetReservationByCarNameQuery(carName));
         return Ok(reservation);
     }
+    
+    [HttpGet("CarsAndReservation")]
+    public async Task<ActionResult> GetCarsAndReservation()
+    {
+        var carsAndReservation = await _mediator.Send(new GetCarsAndReservationsQuery());
+        return Ok(carsAndReservation);
+    }
 
 
 }

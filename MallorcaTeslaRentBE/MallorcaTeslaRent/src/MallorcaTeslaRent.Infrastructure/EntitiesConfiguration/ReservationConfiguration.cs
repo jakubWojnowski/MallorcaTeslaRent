@@ -9,8 +9,8 @@ public sealed class ReservationConfiguration : IEntityTypeConfiguration<Reservat
     public void Configure(EntityTypeBuilder<Reservation> builder)
     {
         builder.HasKey(r => r.Id);
-        builder.Property(r => r.StartDate).IsRequired();
-        builder.Property(r => r.EndDate).IsRequired();
+        builder.Property(r => r.StartDate).HasColumnType("date").IsRequired();
+        builder.Property(r => r.EndDate).HasColumnType("date").IsRequired();
         builder.Property(p => p.TotalPrice).HasPrecision(10,2);
     }
 }

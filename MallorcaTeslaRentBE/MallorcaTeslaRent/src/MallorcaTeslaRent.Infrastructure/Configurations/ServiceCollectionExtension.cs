@@ -38,7 +38,9 @@ public static class ServiceCollectionExtension
         });
         services.AddDbContext<MallorcaTeslaRentDbContext>(options =>
         {
-            options.UseSqlServer(configuration.GetConnectionString("MallorcaTeslaRent"));
+            options
+                .UseLazyLoadingProxies()
+                .UseSqlServer(configuration.GetConnectionString("MallorcaTeslaRent"));
         });
         services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericRepository<,>))
             .AddScoped<IRentalLocationRepository, RentalLocationRepository>()

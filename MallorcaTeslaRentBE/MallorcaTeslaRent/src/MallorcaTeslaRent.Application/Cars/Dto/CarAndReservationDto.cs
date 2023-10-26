@@ -1,6 +1,8 @@
-﻿namespace MallorcaTeslaRent.Application.Cars.Dto;
+﻿using MallorcaTeslaRent.Application.Reservations.Dto;
 
-public class CarDto
+namespace MallorcaTeslaRent.Application.Cars.Dto;
+
+public class CarAndReservationDto
 {
     public Guid Id { get; set; }
     public string Name { get; set; }
@@ -8,5 +10,6 @@ public class CarDto
     public string Description { get; set; }
     public decimal PricePerDay { get; set; }
     public int NumberOfSeats { get; set; }
-    
+
+    public List<ReservationDto> Reservations { get; set; }
 }

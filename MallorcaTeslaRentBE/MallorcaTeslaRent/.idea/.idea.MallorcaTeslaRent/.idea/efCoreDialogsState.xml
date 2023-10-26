@@ -6,6 +6,7 @@
         <entry key="Common:5c508c34-0a29-4b52-8b28-e561a0cd0365:dbContext" value="MallorcaTeslaRent.Infrastructure.Persistence.MallorcaTeslaRentDbContext" />
         <entry key="Common:buildConfiguration" value="Debug" />
         <entry key="Common:e28e7276-db28-47cf-baa0-794d27af3caf:dbContext" value="MallorcaTeslaRent.Infrastructure.Persistence.MallorcaTeslaRentDbContext" />
+        <entry key="Common:fad7a316-c88d-400b-b7f7-58390787bd45:dbContext" value="MallorcaTeslaRent.Infrastructure.Persistence.MallorcaTeslaRentDbContext" />
         <entry key="Common:noBuild" value="false" />
         <entry key="Common:outputFolder" value="Migrations" />
         <entry key="Common:useDefaultConnection" value="true" />

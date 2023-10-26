@@ -12,6 +12,6 @@ public sealed class CarConfiguration : IEntityTypeConfiguration<Car>
         builder.Property(c => c.Model).IsRequired();
         builder.Property(c => c.PricePerDay).HasPrecision(10,2).IsRequired();
         builder.HasOne(c => c.RentalLocation).WithMany(r => r.Cars);
-        builder.HasOne(c => c.Reservation).WithOne(r => r.Car).HasForeignKey<Reservation>(r => r.CarId);
+        builder.HasMany(c => c.Reservations).WithOne(r => r.Car);
     }
 }
