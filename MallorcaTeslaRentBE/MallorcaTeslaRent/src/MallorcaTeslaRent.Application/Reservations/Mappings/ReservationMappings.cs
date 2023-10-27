@@ -10,6 +10,9 @@ public partial class ReservationMappings
     public partial Reservation ReservationDtoToReservation(ReservationDto reservationDto);
     public partial IEnumerable<ReservationDto> MapReservationDtosToReservations(IEnumerable<Reservation?> reservation);
     
+    public partial AddReservationDto ReservationToAddReservationDto(Reservation? reservation);
+    public partial Reservation AddReservationDtoToReservation(AddReservationDto reservationDto);
+    
     public Reservation UpdateReservation(ReservationDto reservationDto,Reservation reservation)
     {
         reservation.StartDate = reservationDto.StartDate;

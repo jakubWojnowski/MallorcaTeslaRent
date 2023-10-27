@@ -2,6 +2,7 @@
 using MallorcaTeslaRent.Application.Cars.Commands.Delete;
 using MallorcaTeslaRent.Application.Cars.Commands.Update;
 using MallorcaTeslaRent.Application.Cars.Dto;
+using MallorcaTeslaRent.Application.Cars.Query.GetList;
 using MallorcaTeslaRent.Application.RentalLocations.Commands.Create;
 using MallorcaTeslaRent.Application.RentalLocations.Commands.Delete;
 using MallorcaTeslaRent.Application.RentalLocations.Commands.Update;
@@ -52,9 +53,9 @@ public class AdminController : ControllerBase
     }
     
     [HttpPost("rentalLocation/{id}/car")]
-    public async Task<ActionResult> CreateCar([FromBody] CarDto carDto, [FromRoute] Guid id)
+    public async Task<ActionResult> CreateCar([FromBody] AddCarDto addCarDto, [FromRoute] Guid id)
     {
-        var carId = await _mediator.Send(new CreateCarCommand(carDto, id));
+        var carId = await _mediator.Send(new CreateCarCommand(addCarDto, id));
         return Created($"api/car/{carId}", carId);
     }
     [HttpDelete("car/{id}")]
@@ -95,5 +96,11 @@ public class AdminController : ControllerBase
     {
         await _mediator.Send(new UpdateReservationCommand(reservationDto, id));
         return NoContent();
+    }
+    [HttpGet("Car/CarsAndReservation")]
+    public async Task<ActionResult> GetCarsAndReservation()
+    {
+        var carsAndReservation = await _mediator.Send(new GetCarsAndReservationsQuery());
+        return Ok(carsAndReservation);
     }
 }

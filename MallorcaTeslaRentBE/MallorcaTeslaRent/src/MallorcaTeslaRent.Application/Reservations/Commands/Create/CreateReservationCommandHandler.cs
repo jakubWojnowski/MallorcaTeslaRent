@@ -29,7 +29,7 @@ public class CreateReservationCommandHandler : IRequestHandler<CreateReservation
 
     public async Task<Guid> Handle(CreateReservationCommand request, CancellationToken cancellationToken)
     {   
-        var reservation = Mapper.ReservationDtoToReservation(request.ReservationDto);
+        var reservation = Mapper.AddReservationDtoToReservation(request.AddReservationDto);
         var car = await _carRepository.GetByIdAsync(reservation.CarId, cancellationToken);
         
         if (car is null)
@@ -39,8 +39,8 @@ public class CreateReservationCommandHandler : IRequestHandler<CreateReservation
 
         var totalPrice = ReservationPriceHelper.CalculateTotalPrice
         (
-            request.ReservationDto.StartDate, 
-            request.ReservationDto.EndDate,
+            reservation.StartDate, 
+            reservation.EndDate,
             car.PricePerDay
         );
     

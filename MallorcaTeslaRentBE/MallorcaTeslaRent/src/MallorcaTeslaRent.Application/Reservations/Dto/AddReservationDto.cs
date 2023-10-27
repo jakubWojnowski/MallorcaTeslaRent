@@ -1,12 +1,8 @@
-﻿using System.Runtime.InteropServices.JavaScript;
+﻿namespace MallorcaTeslaRent.Application.Reservations.Dto;
 
-namespace MallorcaTeslaRent.Application.Reservations.Dto;
-
-public class ReservationDto
+public class AddReservationDto
 {
-    public Guid Id { get; set; }
     public DateTime StartDate { get; set; } = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"));
     public DateTime EndDate { get; set; } = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"));
-    public decimal TotalPrice { get; set ; } 
     public Guid CarId { get; set; }
 }

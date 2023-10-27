@@ -1,4 +1,5 @@
-﻿using MallorcaTeslaRent.Application.Cars.Query.Get;
+﻿using MallorcaTeslaRent.Application.Cars.Commands.Update;
+using MallorcaTeslaRent.Application.Cars.Query.Get;
 using MallorcaTeslaRent.Application.Cars.Query.GetList;
 using MallorcaTeslaRent.Application.RentalLocations.Query.Get;
 using MallorcaTeslaRent.Application.RentalLocations.Query.GetList;
@@ -15,30 +16,30 @@ namespace MallorcaTeslaRent.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 [Authorize]
-public class RentalCarController : ControllerBase
+public class RentCarController : ControllerBase
 {
     private readonly IMediator _mediator;
 
-    public RentalCarController(IMediator mediator)
+    public RentCarController(IMediator mediator)
     {
         _mediator = mediator;
     }
 
-    [HttpGet("rentalLocation/{id}")]
+    [HttpGet("RentalLocation/{id}")]
     public async Task<ActionResult> Get([FromRoute] Guid id)
     {
         var rentalLocation = await _mediator.Send(new GetRentalLocationByIdQuery(id));
         return Ok(rentalLocation);
     }
 
-    [HttpGet("rentalLocations")]
+    [HttpGet("RentalLocations")]
     public async Task<ActionResult> GetAll()
     {
         var rentalLocations = await _mediator.Send(new GetAllRentalLocationsQuery());
         return Ok(rentalLocations);
     }
 
-    [HttpGet("rentalLocationsAndCars")]
+    [HttpGet("RentalLocationsAndCars")]
     public async Task<ActionResult> GetRentalLocationsWithCars()
     {
         var rentalLocations = await _mediator.Send(new GetRenatLocationsAndCarsQuery());
@@ -52,7 +53,7 @@ public class RentalCarController : ControllerBase
         return Ok(car);
     }
 
-    [HttpGet("cars")]
+    [HttpGet("Cars")]
     public async Task<ActionResult> GetAllCars()
     {
         var cars = await _mediator.Send(new GetAllCarsQuery());
@@ -60,9 +61,9 @@ public class RentalCarController : ControllerBase
     }
     
     [HttpPost("Reservation")]
-    public async Task<ActionResult> CreateReservation([FromBody] ReservationDto reservationDto)
+    public async Task<ActionResult> CreateReservation([FromBody] AddReservationDto addReservationDto)
     {
-        var reservationId = await _mediator.Send(new CreateReservationCommand(reservationDto));
+        var reservationId = await _mediator.Send(new CreateReservationCommand(addReservationDto));
         return Ok(reservationId);
     }
     
@@ -80,12 +81,13 @@ public class RentalCarController : ControllerBase
         return Ok(reservation);
     }
     
-    [HttpGet("CarsAndReservation")]
-    public async Task<ActionResult> GetCarsAndReservation()
+    [HttpPut("Car/{id}")]
+    public async Task<ActionResult> DropOffCar([FromRoute] Guid carId, [FromRoute] Guid rentallocationId)
     {
-        var carsAndReservation = await _mediator.Send(new GetCarsAndReservationsQuery());
-        return Ok(carsAndReservation);
+        await _mediator.Send(new CarDropOffCommand(carId, rentallocationId));
+        return NoContent();
     }
+  
 
 
 }

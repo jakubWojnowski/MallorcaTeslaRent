@@ -3,4 +3,4 @@ using MediatR;
 
 namespace MallorcaTeslaRent.Application.Cars.Commands.Create;
 
-public record CreateCarCommand(CarDto CarDto, Guid RentalLocationId) : IRequest<Guid>;
+public record CreateCarCommand(AddCarDto AddCarDto, Guid RentalLocationId) : IRequest<Guid>;

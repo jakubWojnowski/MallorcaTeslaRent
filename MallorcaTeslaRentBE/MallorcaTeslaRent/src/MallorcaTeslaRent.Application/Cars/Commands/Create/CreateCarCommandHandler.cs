@@ -19,7 +19,7 @@ public class CreateCarCommandHandler : IRequestHandler<CreateCarCommand, Guid>
     }
     public async Task<Guid> Handle(CreateCarCommand request, CancellationToken cancellationToken)
     {
-        var car =  Mapper.MapCarDtoToCar(request.CarDto);
+        var car =  Mapper.MapAddCarDtoToCar(request.AddCarDto);
         var rentalLocation = await _rentalLocationRepository.GetByIdAsync(request.RentalLocationId, cancellationToken);
         if (rentalLocation is null) throw new NotFoundException($"Rental location od id {request.RentalLocationId} does not exist!!!");
         car.RentalLocationId = rentalLocation.Id;

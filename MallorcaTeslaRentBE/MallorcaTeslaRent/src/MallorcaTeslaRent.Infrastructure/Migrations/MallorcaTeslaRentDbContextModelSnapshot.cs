@@ -54,7 +54,7 @@ namespace MallorcaTeslaRent.Infrastructure.Migrations
 
                     b.HasIndex("RentalLocationId");
 
-                    b.ToTable("Cars");
+                    b.ToTable("Cars", (string)null);
                 });
 
             modelBuilder.Entity("MallorcaTeslaRent.Domain.Entities.RentalLocation", b =>
@@ -73,7 +73,7 @@ namespace MallorcaTeslaRent.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RentalLocations");
+                    b.ToTable("RentalLocations", (string)null);
                 });
 
             modelBuilder.Entity("MallorcaTeslaRent.Domain.Entities.Reservation", b =>
@@ -104,7 +104,7 @@ namespace MallorcaTeslaRent.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reservations");
+                    b.ToTable("Reservations", (string)null);
                 });
 
             modelBuilder.Entity("MallorcaTeslaRent.Domain.Entities.User", b =>
@@ -137,7 +137,7 @@ namespace MallorcaTeslaRent.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("MallorcaTeslaRent.Domain.Entities.Car", b =>
