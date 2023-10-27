@@ -103,4 +103,10 @@ public class AdminController : ControllerBase
         var carsAndReservation = await _mediator.Send(new GetCarsAndReservationsQuery());
         return Ok(carsAndReservation);
     }
+    [HttpPut("RentalLocation/{rentalLocationId}/Car/{carId}")]
+    public async Task<ActionResult> DropOffCar([FromRoute] Guid carId, [FromRoute] Guid rentalLocationId)
+    {
+        await _mediator.Send(new CarDropOffCommand(carId, rentalLocationId));
+        return NoContent();
+    }
 }

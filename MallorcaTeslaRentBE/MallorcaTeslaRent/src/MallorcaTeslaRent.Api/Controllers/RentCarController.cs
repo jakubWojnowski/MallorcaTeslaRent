@@ -45,7 +45,7 @@ public class RentCarController : ControllerBase
         var rentalLocations = await _mediator.Send(new GetRenatLocationsAndCarsQuery());
         return Ok(rentalLocations);
     }
-    
+
     [HttpGet("car/{id}")]
     public async Task<ActionResult> GetCar([FromRoute] Guid id)
     {
@@ -59,35 +59,25 @@ public class RentCarController : ControllerBase
         var cars = await _mediator.Send(new GetAllCarsQuery());
         return Ok(cars);
     }
-    
+
     [HttpPost("Reservation")]
     public async Task<ActionResult> CreateReservation([FromBody] AddReservationDto addReservationDto)
     {
         var reservationId = await _mediator.Send(new CreateReservationCommand(addReservationDto));
         return Ok(reservationId);
     }
-    
+
     [HttpGet("Reservations")]
     public async Task<ActionResult> GetAllReservationsForUser()
     {
         var reservations = await _mediator.Send(new GetAllReservationsForUserQuery());
         return Ok(reservations);
     }
-    
+
     [HttpGet("Reservations/{carName}")]
     public async Task<ActionResult> GetReservationByCarName([FromRoute] string carName)
     {
         var reservation = await _mediator.Send(new GetReservationByCarNameQuery(carName));
         return Ok(reservation);
     }
-    
-    [HttpPut("Car/{id}")]
-    public async Task<ActionResult> DropOffCar([FromRoute] Guid carId, [FromRoute] Guid rentallocationId)
-    {
-        await _mediator.Send(new CarDropOffCommand(carId, rentallocationId));
-        return NoContent();
-    }
-  
-
-
 }
