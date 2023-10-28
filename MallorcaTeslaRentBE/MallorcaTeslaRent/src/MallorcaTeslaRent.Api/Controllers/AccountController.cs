@@ -1,5 +1,6 @@
 ﻿using MallorcaTeslaRent.Application.Users.Commands.Delete;
 using MallorcaTeslaRent.Application.Users.Commands.Login;
+using MallorcaTeslaRent.Application.Users.Commands.logout;
 using MallorcaTeslaRent.Application.Users.Commands.Register;
 using MallorcaTeslaRent.Application.Users.Dto;
 using MallorcaTeslaRent.Application.Users.Query.Get;
@@ -33,25 +34,24 @@ public class AccountController : ControllerBase
         var token = await _mediator.Send(new LoginUserCommand(loginUserDto));
         return Ok(token);
     }
-
-    [HttpDelete("delete/{id}")]
-    public async Task<IActionResult> Delete(Guid id)
+    
+    [HttpDelete("delete")]
+    public async Task<IActionResult> Delete()
     {
-        await _mediator.Send(new DeleteUserCommand(id));
-        return Ok();
+        await _mediator.Send(new DeleteOwnAccountCommand());
+        return NoContent();
     }
-
-    [HttpGet("get/{id}")]
-    public async Task<IActionResult> Get(Guid id)
+    [HttpPost("logout")]
+    public async Task<IActionResult> Logout()
     {
-        var user = await _mediator.Send(new GetUserByIdQuery(id));
-        return Ok(user);
+        await _mediator.Send(new LogoutUserCommand());
+        return NoContent();
     }
     
-    [HttpGet("get")]
-    public async Task<IActionResult> Get()
+    [HttpGet("Profile")]
+    public async Task<IActionResult> Profile()
     {
-        var users = await _mediator.Send(new GetAllUsersQuery());
-        return Ok(users);
+        var user = await _mediator.Send(new GetAccountProfileQuery());
+        return Ok(user);
     }
 }

@@ -12,6 +12,9 @@ using MallorcaTeslaRent.Application.Reservations.Commands.Update;
 using MallorcaTeslaRent.Application.Reservations.Dto;
 using MallorcaTeslaRent.Application.Reservations.Query.Get;
 using MallorcaTeslaRent.Application.Reservations.Query.GetList;
+using MallorcaTeslaRent.Application.Users.Commands.Delete;
+using MallorcaTeslaRent.Application.Users.Query.Get;
+using MallorcaTeslaRent.Application.Users.Query.GetList;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -108,5 +111,26 @@ public class AdminController : ControllerBase
     {
         await _mediator.Send(new CarDropOffCommand(carId, rentalLocationId));
         return NoContent();
+    }
+    
+    [HttpGet("User/{id}")]
+    public async Task<IActionResult> GetUser(Guid id)
+    {
+        var user = await _mediator.Send(new GetUserByIdQuery(id));
+        return Ok(user);
+    }
+    
+    [HttpGet("Users")]
+    public async Task<IActionResult> GetUsers()
+    {
+        var users = await _mediator.Send(new GetAllUsersQuery());
+        return Ok(users);
+    }
+    
+    [HttpDelete("Account/{id}")]
+    public async Task<IActionResult> DeleteUser(Guid id)
+    {
+        await _mediator.Send(new DeleteUserCommand(id));
+        return Ok();
     }
 }

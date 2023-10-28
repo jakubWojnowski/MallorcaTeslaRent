@@ -11,7 +11,8 @@ public class CurrentUserService : ICurrentUserService
     {
         _httpContextAccessor = httpContextAccessor;
     }
-    
+
+
     public CurrentUser? GetCurrentUser()
     {
         var claims = _httpContextAccessor.HttpContext?.User.Claims;
@@ -26,4 +27,6 @@ public class CurrentUserService : ICurrentUserService
         var id = enumerable.First(x => x.Type == ClaimTypes.NameIdentifier).Value;
         return new CurrentUser(fullName, roles, id);
     }
+    
+    
 }

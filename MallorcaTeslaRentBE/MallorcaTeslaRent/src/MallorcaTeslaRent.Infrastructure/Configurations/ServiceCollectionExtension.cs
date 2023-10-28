@@ -1,10 +1,14 @@
 ﻿using System.Text;
+using MallorcaTeslaRent.Application.Users.UserContext;
+using MallorcaTeslaRent.Domain.Entities;
 using MallorcaTeslaRent.Domain.Interfaces;
 using MallorcaTeslaRent.Infrastructure.Authentication;
 using MallorcaTeslaRent.Infrastructure.Persistence;
 using MallorcaTeslaRent.Infrastructure.Repositories;
 using MallorcaTeslaRent.Infrastructure.Settings;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,13 +23,23 @@ public static class ServiceCollectionExtension
         var authenticationSettings = new AuthenticationSettings();
         configuration.GetSection("Authentication").Bind(authenticationSettings);
         services.AddSingleton(authenticationSettings);
+        
         services.AddAuthentication(option =>
         {
             option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            option.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             option.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            option.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            option.DefaultSignOutScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 
-        }).AddJwtBearer(cfg =>
+        }).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+            {
+                options.LoginPath = "/Account/Login";
+                options.LogoutPath = "/Account/Logout";
+                options.AccessDeniedPath = "/Account/AccessDenied";
+            })
+            .AddJwtBearer(cfg =>
         {
             cfg.RequireHttpsMetadata = false;
             cfg.SaveToken = true;
