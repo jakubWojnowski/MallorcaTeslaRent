@@ -7,4 +7,8 @@ public static class ReservationPriceHelper
         var totalDays = (endDate - startDate).Days;
         return totalDays * pricePerDay;
     }
+    
+    // Determine whether the sentiment of text is positive
+   // Use a web service to get the sentiment
+   
 }
