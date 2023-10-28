@@ -1,18 +1,9 @@
-﻿//napisz mi serwisy endpointow do logowania i rejestracji w typescript za pomoca biblioteki fetch 
-//dodaj do nich typy
-//dodaj do nich obsluge bledow
-//dodaj do nich obsluge tokenow
-//dodaj do nich obsluge zapisu tokenow w local storage
-//dodaj do nich obsluge wylogowania
-//dodaj do nich obsluge rejestracji
-//dodaj do nich obsluge logowania
-
-import { User } from "../../models/User";
+﻿import { User } from "../../interfaces/User";
 import { Endpoints } from "../../config/Urls";
-import { LoginCredentials } from "../../models/LoginCredentials";
-import { RegisterCredentials } from "../../models/RegisterCredentials";
-import { LoginResponse } from "../../models/LoginResponse";
-import { RegisterResponse } from "../../models/RegisterResponse";
+import { LoginCredentials } from "../models/LoginCredentials.ts";
+import { RegisterCredentials } from "../models/RegisterCredentials.ts";
+import { LoginResponse } from "../models/LoginResponse.ts";
+import { RegisterResponse } from "../models/RegisterResponse.ts";
 
 export const login = async (credentials: LoginCredentials): Promise<LoginResponse> => {
     const response = await fetch(`${Endpoints.API_URL_ACCOUNT}/login`, {
