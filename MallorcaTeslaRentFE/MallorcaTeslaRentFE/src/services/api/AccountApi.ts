@@ -1,9 +1,9 @@
-﻿import { User } from "../../interfaces/User";
-import { Endpoints } from "../../config/Urls";
-import { LoginCredentials } from "../models/LoginCredentials.ts";
-import { RegisterCredentials } from "../models/RegisterCredentials.ts";
-import { LoginResponse } from "../models/LoginResponse.ts";
-import { RegisterResponse } from "../models/RegisterResponse.ts";
+﻿import {User} from "../../interfaces/User";
+import {Endpoints} from "../../config/Urls";
+import {LoginCredentials} from "../models/LoginCredentials.ts";
+import {RegisterCredentials} from "../models/RegisterCredentials.ts";
+import {LoginResponse} from "../models/LoginResponse.ts";
+import {RegisterResponse} from "../models/RegisterResponse.ts";
 
 export const login = async (credentials: LoginCredentials): Promise<LoginResponse> => {
     const response = await fetch(`${Endpoints.API_URL_ACCOUNT}/login`, {
@@ -18,9 +18,7 @@ export const login = async (credentials: LoginCredentials): Promise<LoginRespons
         throw new Error('Login failed');
     }
 
-    const data = await response.json();
-
-    return data;
+    return await response.json();
 }
 
 export const register = async (credentials: RegisterCredentials): Promise<RegisterResponse> => {
@@ -66,9 +64,7 @@ export const getUser = async (): Promise<User> => {
         throw new Error('Get user failed');
     }
 
-    const data = await response.json();
-
-    return data;
+    return await response.json();
 }
 
 export const updateUser = async (user: User): Promise<User> => {
@@ -84,9 +80,7 @@ export const updateUser = async (user: User): Promise<User> => {
         throw new Error('Update user failed');
     }
 
-    const data = await response.json();
-
-    return data;
+    return await response.json();
 }
 
 export const deleteUser = async (): Promise<void> => {

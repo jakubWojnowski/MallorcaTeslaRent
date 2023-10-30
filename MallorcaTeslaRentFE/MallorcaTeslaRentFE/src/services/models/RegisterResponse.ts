@@ -1,6 +1,4 @@
-﻿//write in ts RegisterResponse
-
-export interface RegisterResponse {
+﻿export interface RegisterResponse {
     id: string;
     firstName: string;
     lastName: string;
