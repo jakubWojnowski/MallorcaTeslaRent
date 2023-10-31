@@ -19,14 +19,13 @@ builder.Services
     
 var app = builder.Build();
 
-app.MapControllers();
 app.UseSwagger();
 app.UseHttpsRedirection();
-
+app.UseCors(policyBuilder => policyBuilder.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:5173"));
 app.UseAuthentication();
 
 app.UseAuthorization();
 app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "MallorcaTeslaRent"));
-
+app.MapControllers();
 app.Run();
 

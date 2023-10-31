@@ -1,6 +1,4 @@
 ﻿using System.Text;
-using MallorcaTeslaRent.Application.Users.UserContext;
-using MallorcaTeslaRent.Domain.Entities;
 using MallorcaTeslaRent.Domain.Interfaces;
 using MallorcaTeslaRent.Infrastructure.Authentication;
 using MallorcaTeslaRent.Infrastructure.Persistence;
@@ -8,7 +6,6 @@ using MallorcaTeslaRent.Infrastructure.Repositories;
 using MallorcaTeslaRent.Infrastructure.Settings;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,9 +18,8 @@ public static class ServiceCollectionExtension
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         var authenticationSettings = new AuthenticationSettings();
-        configuration.GetSection("Authentication").Bind(authenticationSettings);
+        configuration.GetSection(AuthenticationSettings.SectionName).Bind(authenticationSettings);
         services.AddSingleton(authenticationSettings);
-        
         services.AddAuthentication(option =>
         {
             option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

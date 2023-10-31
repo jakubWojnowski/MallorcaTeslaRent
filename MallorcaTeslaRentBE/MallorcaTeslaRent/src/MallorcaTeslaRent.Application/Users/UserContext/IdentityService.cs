@@ -1,10 +1,6 @@
-﻿using System.Security.Claims;
-using MallorcaTeslaRent.Domain.Entities;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 
 namespace MallorcaTeslaRent.Application.Users.UserContext;
 

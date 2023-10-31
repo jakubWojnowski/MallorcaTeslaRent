@@ -4,7 +4,6 @@ using MallorcaTeslaRent.Application.Users.Commands.logout;
 using MallorcaTeslaRent.Application.Users.Commands.Register;
 using MallorcaTeslaRent.Application.Users.Dto;
 using MallorcaTeslaRent.Application.Users.Query.Get;
-using MallorcaTeslaRent.Application.Users.Query.GetList;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
