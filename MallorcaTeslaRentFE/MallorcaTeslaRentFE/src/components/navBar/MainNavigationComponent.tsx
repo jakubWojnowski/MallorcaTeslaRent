@@ -1,14 +1,23 @@
-﻿import {FC} from "react";
-import {Link, NavLink} from "react-router-dom";
+﻿import {FC, FormEvent} from "react";
+import {NavLink, Form, useNavigate} from "react-router-dom";
 import {AppBar, Box, Button, IconButton, Toolbar, Typography} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import classes from "./MainNavigationComponent.module.css";
+import {logout} from "../../actions/logout/Logout.ts";
 
 interface MainNavigationComponentProps {
 
 }
 
 export const MainNavigationComponent: FC<MainNavigationComponentProps> = () => {
+    const navigate = useNavigate();
+    const isLoggedIn = localStorage.getItem('token') !== null;
+    const handleLogout = async (event: FormEvent) => {
+        event.preventDefault();
+        navigate('');
+        await logout();
+        
+    };
     return (
         <header className={classes.header}>
             <Box sx={{flexGrow: 1}}>
@@ -32,15 +41,19 @@ export const MainNavigationComponent: FC<MainNavigationComponentProps> = () => {
 
                                 <NavLink to={"/rentCar"}
                                          className={({isActive}) => isActive ? classes.active : undefined}> rentCar </NavLink>
-
-                                <NavLink to="/auth?mode=login"
-                                         className={({isActive}) => isActive ? classes.active : undefined}> Authentication </NavLink>
+                                
 
                             </ul>
                         </Typography>
-                        <Button color="inherit">
-                            <Link to={"/login"}> Login </Link>
-                        </Button>
+
+                        {isLoggedIn ? (
+                            <Form onSubmit={handleLogout} method="post">
+                                <Button type="submit" variant="contained" color="error">Logout</Button>
+                            </Form>
+                        ) : (
+                            <NavLink to={"/auth?mode=login"}> Login </NavLink>
+                        )}
+                        
                     </Toolbar>
                 </AppBar>
             </Box>

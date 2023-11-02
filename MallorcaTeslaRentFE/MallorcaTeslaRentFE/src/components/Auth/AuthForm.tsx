@@ -1,8 +1,9 @@
-﻿import {Form, Link, redirect, useNavigation, useSearchParams} from 'react-router-dom';
+﻿import {Form, Link, useNavigation, useSearchParams} from 'react-router-dom';
 import {TextField} from '@mui/material';
 import classes from './AuthForm.module.css';
 import React, {FC, useState} from "react";
 import {LoginDataInterface, RegisterDataInterface} from "../../shared/Types.ts";
+import { useNavigate } from 'react-router-dom';
 
 const AuthForm: FC = () => {
     const navigation = useNavigation()
@@ -15,6 +16,8 @@ const AuthForm: FC = () => {
     const [passwordError, setPasswordError] = useState('');
     const [confirmPasswordError, setConfirmPasswordError] = useState('');
     const [dobError, setDobError] = useState('');
+
+    const navigate = useNavigate();
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -84,10 +87,12 @@ const AuthForm: FC = () => {
             } else if (errorMessage === 'User must be above 18 years old') {
                 setDobError('User must be above 18 years old');
             }
-            console.log(errorMessage)
             return;
         }
-        return redirect("/auth?mode=login");
+        const token = await response.text();
+        console.log(token);
+        localStorage.setItem('token', token);
+        navigate("/");
     }
 
     return (

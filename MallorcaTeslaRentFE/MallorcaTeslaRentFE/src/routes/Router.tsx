@@ -6,7 +6,8 @@ import {Home} from "../pages/home/Home.tsx";
 import {RentCar} from "../pages/rentCar/RentCar.tsx";
 import {RootLayout} from "../layout/RootLayout.tsx";
 import RentCarLocation from "../pages/RentCarLocation/RentCarLocation.tsx";
-import AuthForm from "../components/Auth/AuthForm.tsx";
+import Authentication from "../pages/Auth/AuthenticationPage.tsx";
+import {logout as LogoutAction} from "../actions/logout/Logout.ts";
 
 export const Router = () => {
     
@@ -18,9 +19,11 @@ export const Router = () => {
             {path: 'rentCar', element: <RentCar />},
             {path: 'rentCar/:rentCarLocationId', element: <RentCarLocation />},
             {path: 'login', element: <Home />},
-            {path: 'auth', element: <AuthForm />},
+            {path: 'auth', element: <Authentication />},
+            {path: 'logout', action : LogoutAction},
         ]
         },
+        
         
         ]);
     return (
