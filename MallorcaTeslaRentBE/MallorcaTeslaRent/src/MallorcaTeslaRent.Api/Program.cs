@@ -15,7 +15,7 @@ builder.Services
     .AddEndpointsApiExplorer()
     .AddControllers()
     .AddFluentValidation(f => f.RegisterValidatorsFromAssemblyContaining<IValidator>());
-
+    builder.Services.AddCors();
     
 var app = builder.Build();
 

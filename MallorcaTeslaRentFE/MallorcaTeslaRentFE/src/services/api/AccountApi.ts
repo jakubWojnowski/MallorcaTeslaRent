@@ -1,128 +1,62 @@
 ﻿import {User} from "../../interfaces/User";
 import {Endpoints} from "../../config/Urls";
-import {LoginCredentials} from "../models/LoginCredentials.ts";
-import {RegisterCredentials} from "../models/RegisterCredentials.ts";
-import {LoginResponse} from "../models/LoginResponse.ts";
-import {RegisterResponse} from "../models/RegisterResponse.ts";
+import axios from "axios";
+import {LoginDataInterface, RegisterDataInterface} from "../../shared/Types.ts";
 
-export const login = async (credentials: LoginCredentials): Promise<LoginResponse> => {
-    const response = await fetch(`${Endpoints.API_URL_ACCOUNT}/login`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(credentials)
-    });
+export class AccountApi {
+    static async login(data: LoginDataInterface) {
+        const response = await axios.post(`${Endpoints.API_URL_ACCOUNT}/login`, data);
 
-    if (!response.ok) {
-        throw new Error('Login failed');
+        if (response.status !== 200) {
+            throw new Error('Login failed');
+        }
+
+        return response.data;
     }
 
-    return await response.json();
-}
+    static async register(data: RegisterDataInterface) {
+        const response = await axios.post(`${Endpoints.API_URL_ACCOUNT}/register`, data);
 
-export const register = async (credentials: RegisterCredentials): Promise<RegisterResponse> => {
-    const response = await fetch(`${Endpoints.API_URL_ACCOUNT}/register`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(credentials)
-    });
+        if (response.status !== 200) {
+            throw new Error('Register failed');
+        }
 
-    if (!response.ok) {
-        throw new Error('Register failed');
+        return response.data;
     }
 
-    const data = await response.json();
+    static async logout(): Promise<void> {
+        const response = await axios.post(`${Endpoints.API_URL_ACCOUNT}/logout`);
 
-    return data;
-}
-
-export const logout = async (): Promise<void> => {
-    const response = await fetch(`${Endpoints.API_URL_ACCOUNT}/logout`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    });
-
-    if (!response.ok) {
-        throw new Error('Logout failed');
-    }
-}
-
-export const getUser = async (): Promise<User> => {
-    const response = await fetch(`${Endpoints.API_URL_ACCOUNT}/user`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    });
-
-    if (!response.ok) {
-        throw new Error('Get user failed');
+        if (response.status !== 200) {
+            throw new Error('Logout failed');
+        }
     }
 
-    return await response.json();
-}
+    static async getUser(): Promise<User> {
+        const response = await axios.get(`${Endpoints.API_URL_ACCOUNT}/user`);
 
-export const updateUser = async (user: User): Promise<User> => {
-    const response = await fetch(`${Endpoints.API_URL_ACCOUNT}/user`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(user)
-    });
+        if (response.status !== 200) {
+            throw new Error('Get user failed');
+        }
 
-    if (!response.ok) {
-        throw new Error('Update user failed');
+        return response.data;
     }
 
-    return await response.json();
-}
+    static async updateUser(user: User): Promise<User> {
+        const response = await axios.put(`${Endpoints.API_URL_ACCOUNT}/user`, user);
 
-export const deleteUser = async (): Promise<void> => {
-    const response = await fetch(`${Endpoints.API_URL_ACCOUNT}/user`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    });
+        if (response.status !== 200) {
+            throw new Error('Update user failed');
+        }
 
-    if (!response.ok) {
-        throw new Error('Delete user failed');
+        return response.data;
+    }
+
+    static async deleteUser(): Promise<void> {
+        const response = await axios.delete(`${Endpoints.API_URL_ACCOUNT}/user`);
+
+        if (response.status !== 200) {
+            throw new Error('Delete user failed');
+        }
     }
 }
-
-export const changePassword = async (oldPassword: string, newPassword: string): Promise<void> => {
-    const response = await fetch(`${Endpoints.API_URL_ACCOUNT}/user/password`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ oldPassword, newPassword })
-    });
-
-    if (!response.ok) {
-        throw new Error('Change password failed');
-    }
-}
-
-export const changeEmail = async (email: string): Promise<void> => {
-    const response = await fetch(`${Endpoints.API_URL_ACCOUNT}/user/email`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email })
-    });
-
-    if (!response.ok) {
-        throw new Error('Change email failed');
-    }
-}
-
-
-

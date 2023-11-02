@@ -6,6 +6,8 @@ import {Home} from "../pages/home/Home.tsx";
 import {RentCar} from "../pages/rentCar/RentCar.tsx";
 import {RootLayout} from "../layout/RootLayout.tsx";
 import RentCarLocation from "../pages/RentCarLocation/RentCarLocation.tsx";
+import RegisterAuthForm from "../components/Auth/RegisterAuthForm.tsx";
+
 export const Router = () => {
     
     const router = createBrowserRouter([
@@ -15,7 +17,8 @@ export const Router = () => {
             {path: '', element: <Home />},
             {path: 'rentCar', element: <RentCar />},
             {path: 'rentCar/:rentCarLocationId', element: <RentCarLocation />},
-            {path: 'login', element: <Home />}
+            {path: 'login', element: <Home />},
+            {path: 'auth', element: <RegisterAuthForm />},
         ]
         },
         
