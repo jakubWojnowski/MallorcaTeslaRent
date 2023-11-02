@@ -47,4 +47,8 @@
     border: black 1px solid;
     
 }
+.error {
+    color: red;
+    font-weight: bold;
+}
 

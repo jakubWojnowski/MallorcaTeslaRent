@@ -3,7 +3,7 @@ import {authMessages} from "../../../messages/localizedMessages/AuthMessages.ts"
 
 export const signUpSchema = object({
     username: string()
-        .min(4, authMessages.username_invalid)
+        .min(8, authMessages.username_invalid)
         .required(authMessages.required),
     email: string()
         .email(authMessages.email_invalid)

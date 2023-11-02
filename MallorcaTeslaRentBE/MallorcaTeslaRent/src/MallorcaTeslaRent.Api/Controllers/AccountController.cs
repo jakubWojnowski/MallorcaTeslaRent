@@ -23,15 +23,39 @@ public class AccountController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterUserDto registerUserDto)
     {
-        await _mediator.Send(new RegisterUserCommand(registerUserDto));
-        return Ok();
+        try
+        {
+            await _mediator.Send(new RegisterUserCommand(registerUserDto));
+            return Ok();
+        }
+        catch (Exception e)
+        {
+            if (e.Message == "Email already exists")
+            {
+                return Conflict(e.Message);
+            }
+            return BadRequest(e.Message);
+        }
     }
 
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginUserDto loginUserDto)
     {
-        var token = await _mediator.Send(new LoginUserCommand(loginUserDto));
-        return Ok(token);
+        try
+        {
+            var token = await _mediator.Send(new LoginUserCommand(loginUserDto));
+            return Ok(token);
+        }
+        catch (Exception e)
+        {
+           if (e.Message == "Invalid email or password")
+           {
+               return Unauthorized(e.Message);
+           }
+
+           return BadRequest(e.Message);
+        }
+    
     }
     
     [HttpDelete("delete")]
