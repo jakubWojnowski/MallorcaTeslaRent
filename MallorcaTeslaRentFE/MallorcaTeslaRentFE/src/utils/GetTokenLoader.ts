@@ -1,4 +1,4 @@
-﻿export const GetAuth = () => {
+﻿export const GetTokenLoader = () => {
     const token = localStorage.getItem('token');
     const refreshToken = localStorage.getItem('refreshToken');
     const user = localStorage.getItem('user');

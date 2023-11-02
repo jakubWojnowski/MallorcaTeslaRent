@@ -8,12 +8,14 @@ import {RootLayout} from "../layout/RootLayout.tsx";
 import RentCarLocation from "../pages/RentCarLocation/RentCarLocation.tsx";
 import Authentication from "../pages/Auth/AuthenticationPage.tsx";
 import {logout as LogoutAction} from "../actions/logout/Logout.ts";
-
+import { GetTokenLoader as tokenLoader} from "../utils/GetTokenLoader.ts";
 export const Router = () => {
     
     const router = createBrowserRouter([
         {path: '/', element: <RootLayout />,
             errorElement: <h1>Not Found</h1>,
+            id: 'root',
+            loader: tokenLoader,
         children: [
             {path: '', element: <Home />},
             {path: 'rentCar', element: <RentCar />},
