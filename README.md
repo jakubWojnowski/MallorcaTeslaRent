@@ -54,14 +54,16 @@ Before you begin, ensure you have the following software installed on your syste
 
  
 7. first page contains locations for renting car
+8. 
 - locations list
-   ![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/5e10763e-7d09-41df-af42-85cbb2459ceb)
+ ![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/5e10763e-7d09-41df-af42-85cbb2459ceb)
 
-7. after clicking on one of links second page contains cars
-   
+7. second page have list of cars for rent
+
+-cars list   
 ![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/f271dbcc-c7e0-4ad9-bbe2-c66e80c17bf9)
 
-9. third page after clicking link "See Details" contains information about car and functionality to rent it for time range 
+9. third page is for deploying details about selected car and below that there is functionality to select time range for how long user wants to rent a car
 
 ![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/a809de2c-9c7e-4f36-96bf-a7d2a82be196)
 
