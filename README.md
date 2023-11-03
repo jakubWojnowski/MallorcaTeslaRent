@@ -44,6 +44,7 @@ Before you begin, ensure you have the following software installed on your syste
 
 }
 - login
+  
  ![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/bec346d2-8540-4b97-b85c-6bde8d06a7f3)
 
 
