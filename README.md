@@ -53,12 +53,11 @@ Before you begin, ensure you have the following software installed on your syste
 ![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/9bd7cc2b-919e-4b6e-a730-a52147331ab5)
 
  
-7. rent car
-   first page contains locations for renting car
+7. first page contains locations for renting car
    
    ![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/5e10763e-7d09-41df-af42-85cbb2459ceb)
 
-8. after clicking on one of locations second page contains cars
+8. after clicking on one of links second page contains cars
    
 ![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/f271dbcc-c7e0-4ad9-bbe2-c66e80c17bf9)
 
