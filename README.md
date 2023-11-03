@@ -56,7 +56,8 @@ Before you begin, ensure you have the following software installed on your syste
 7. first page contains locations for renting car
 8. 
 - locations list
- ![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/5e10763e-7d09-41df-af42-85cbb2459ceb)
+
+![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/5e10763e-7d09-41df-af42-85cbb2459ceb)
 
 7. second page have list of cars for rent
 
