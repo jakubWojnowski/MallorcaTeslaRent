@@ -33,7 +33,7 @@ Before you begin, ensure you have the following software installed on your syste
 
 6. logi in or registration
    here u have two accounts
-   - admin:
+ - admin:
    {
   "email": "user1@example.com",
   "password": "Hashedpassword1!"
