@@ -1,8 +1,8 @@
 ﻿import {CarInterface} from "../../shared/Types.ts";
 
-export const fetchCarsAction = async (token: string): Promise<CarInterface[]> => {
+export const fetchCarsAction = async (token: string, locationId: string): Promise<CarInterface[]> => {
     if (token) {
-        const response = await fetch(`http://localhost:5193/api/RentCar/Cars`, {
+        const response = await fetch(`http://localhost:5193/api/RentCar/${locationId}/Cars`, {
             method: 'GET',
             headers: {
                 'Accept': '*/*',

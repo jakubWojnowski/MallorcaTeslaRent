@@ -52,10 +52,10 @@ public class RentCarController : ControllerBase
         return Ok(car);
     }
 
-    [HttpGet("Cars")]
-    public async Task<ActionResult> GetAllCars()
+    [HttpGet("{locationId}/Cars")]
+    public async Task<ActionResult> GetAllCars([FromRoute] Guid locationId)
     {
-        var cars = await _mediator.Send(new GetAllCarsQuery());
+        var cars = await _mediator.Send(new GetAllCarsByLocationIdQuery(locationId));
         return Ok(cars);
     }
 

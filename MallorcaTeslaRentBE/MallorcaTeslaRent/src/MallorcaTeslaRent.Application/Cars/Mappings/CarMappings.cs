@@ -8,7 +8,7 @@ public partial class CarMappings
 {
     public partial Car MapCarDtoToCar(CarDto carDto);
     public partial CarDto MapCarToCarDto(Car car);
-    public partial IEnumerable<CarDto> MapCarDtosToCars(IEnumerable<Car> car);
+    public partial IEnumerable<CarDto> MapCarDtosToCars(IEnumerable<Car?> car);
     
     public partial AddCarDto MapCarToAddCarDto(Car car);
     public partial Car MapAddCarDtoToCar(AddCarDto car);

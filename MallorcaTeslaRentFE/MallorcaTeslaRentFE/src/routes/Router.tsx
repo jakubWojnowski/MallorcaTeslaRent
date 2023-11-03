@@ -31,9 +31,10 @@ export const Router = () => {
                         return Promise.resolve({}); 
                     }
                 }},
-            {path: 'rentCar/:rentCarLocationId', element: <RentCarLocation /> , action: () => {
+            {path: 'rentCar/:rentCarLocationId', element: <RentCarLocation /> , action: (request) => {
+                    const locationId = request.params.rentCarLocationId!;
                     if (token) {
-                        return carsLoader(token);
+                        return carsLoader(token, locationId);
                     } else {
                         return Promise.resolve({}); 
                     }
@@ -41,7 +42,6 @@ export const Router = () => {
                 },
             {path:'rentCar/:rentCarLocationId/:carId', element: <CarDetails/>, action: (request) => {
                     const carId = request.params.carId!;
-                    const locationId = request.params.rentCarLocationId!;
                     if (token) {
                         return carLoader(token, carId);
                     } else {
