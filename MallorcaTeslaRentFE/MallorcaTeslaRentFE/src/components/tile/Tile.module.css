@@ -1,0 +1,14 @@
+﻿.tile {
+    padding: 10px;
+    border: 1px solid #000;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+}
+
+.tile:hover {
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.tile.active {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}

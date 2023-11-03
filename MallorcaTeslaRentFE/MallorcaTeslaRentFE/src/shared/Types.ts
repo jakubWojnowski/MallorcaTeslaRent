@@ -10,3 +10,9 @@ export interface RegisterDataInterface {
     confirmPassword: string;
     dateOfBirth: string;
 }
+
+export interface LocationInterface {
+    id: number;
+    name: string;
+    address: string;
+}
