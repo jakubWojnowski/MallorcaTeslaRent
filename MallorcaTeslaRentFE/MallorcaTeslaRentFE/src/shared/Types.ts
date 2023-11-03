@@ -1,3 +1,5 @@
+import {da} from "date-fns/locale";
+
 export interface LoginDataInterface {
     email: string;
     password: string;
@@ -25,4 +27,11 @@ export interface CarInterface {
     pricePerDay: number;
     numberOfSeats: number;
     locationId: number;
+}
+
+export interface AddCarReservationInterface {
+    carId: string;
+    dateFrom: string;
+    dateTo: string;
+   
 }

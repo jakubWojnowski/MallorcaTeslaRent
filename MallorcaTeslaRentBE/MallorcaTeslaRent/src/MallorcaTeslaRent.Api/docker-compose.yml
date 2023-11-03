@@ -15,17 +15,17 @@ services:
     container_name: mallorca-tesla-rent-db
 
   # Your .NET API Service (use the image you built)
-  api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "80:80"
-    depends_on:
-      - db
-    networks:
-      - mynetwork
-    container_name: mallorca-tesla-rent-api
+#  api:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    ports:
+#      - "80:80"
+#    depends_on:
+#      - db
+#    networks:
+#      - mynetwork
+#    container_name: mallorca-tesla-rent-api
 
 networks:
   mynetwork:
