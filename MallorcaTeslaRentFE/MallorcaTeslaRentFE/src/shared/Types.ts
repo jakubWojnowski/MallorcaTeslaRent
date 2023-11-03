@@ -23,6 +23,6 @@ export interface CarInterface {
     model: string;
     description: string;
     pricePerDay: number;
-    NumberOfSeats: number;
+    numberOfSeats: number;
     locationId: number;
 }
