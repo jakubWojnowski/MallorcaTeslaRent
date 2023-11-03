@@ -30,7 +30,8 @@ Before you begin, ensure you have the following software installed on your syste
     dotnet ef database update
 
 5. back end runs on: http://localhost:5193 and front end on: http://localhost:5173
-   #Front End
+
+ # Front End
 
 1. login or registration
  - admin:
