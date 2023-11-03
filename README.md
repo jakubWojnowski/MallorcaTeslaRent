@@ -41,11 +41,13 @@ Before you begin, ensure you have the following software installed on your syste
 {
   "email": "user2@example.com",
   "password": "Hashedpassword2!"
+
 }
+- login
  ![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/bec346d2-8540-4b97-b85c-6bde8d06a7f3)
 
 
-registration: 
+- registration: 
 
 ![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/9bd7cc2b-919e-4b6e-a730-a52147331ab5)
 
