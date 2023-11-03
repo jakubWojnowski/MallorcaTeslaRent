@@ -30,8 +30,9 @@ Before you begin, ensure you have the following software installed on your syste
     dotnet ef database update
 
 5. back end runs on: http://localhost:5193 and front end on: http://localhost:5173
+   #Front End
 
-6. login or registration
+1. login or registration
  - admin:
    {
   "email": "user1@example.com",
@@ -52,21 +53,22 @@ Before you begin, ensure you have the following software installed on your syste
 ![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/9bd7cc2b-919e-4b6e-a730-a52147331ab5)
 
  
-7. first page contains locations for renting car
-8. 
+2. first page contains locations for renting car
 - locations list
 
 ![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/5e10763e-7d09-41df-af42-85cbb2459ceb)
 
-7. second page have list of cars for rent
+3. second page have list of cars for rent
 
 -cars list   
 ![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/f271dbcc-c7e0-4ad9-bbe2-c66e80c17bf9)
 
-9. third page is for deploying details about selected car and below that there is functionality to select time range for how long user wants to rent a car
+4. third page is for deploying details about selected car and below that there is functionality to select time range for how long user wants to rent a car
 
 ![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/a809de2c-9c7e-4f36-96bf-a7d2a82be196)
 
 
+
+#Back End
 
 
