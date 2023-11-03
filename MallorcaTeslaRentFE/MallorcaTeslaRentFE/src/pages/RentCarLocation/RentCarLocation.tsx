@@ -16,7 +16,6 @@ const RentCarLocation: FC = () => {
 
             const data = await fetchCarsAction(token, rentCarLocationId!);
             setCars(data);
-            console.log(data)
 
         };
 
@@ -28,7 +27,7 @@ const RentCarLocation: FC = () => {
             <Grid container spacing={5}>
 
                 {cars.map((car) => (
-                    <TileComponent key={car.id} name={car.name} address={car.model}  link={`${car.id}`}
+                    <TileComponent key={car.id} name={car.name} address={car.model} link={`${car.id}`}
                                    text={"See Details"} ImageSrc={"../../public/tesl.png"}/>
                 ))}
 

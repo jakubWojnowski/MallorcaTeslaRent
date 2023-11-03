@@ -1,8 +1,8 @@
 ﻿import {FC, useEffect, useState} from 'react';
-import { Box, Grid } from "@mui/material";
+import {Box, Grid} from "@mui/material";
 import TileComponent from "../../components/tile/TileComponent.tsx";
-import { LocationInterface } from "../../shared/Types.ts";
-import { fetchLocationsAction } from "../../actions/location/GetLocations.ts";
+import {LocationInterface} from "../../shared/Types.ts";
+import {fetchLocationsAction} from "../../actions/location/GetLocations.ts";
 import {GetTokenLoader} from "../../utils/GetTokenLoader.ts";
 
 export const RentCar: FC = () => {
@@ -18,16 +18,14 @@ export const RentCar: FC = () => {
     }, []);
 
     useEffect(() => {
-        locations.map((location) => {
-            console.log(location.name, location.address, location.id)
-        })
     }, [locations]);
 
     return (
-        <Box sx={{ flexGrow: 0.6 }}>
+        <Box sx={{flexGrow: 0.6}}>
             <Grid container spacing={5}>
                 {locations.map((location) => (
-                    <TileComponent key={location.id} name={location.name} address={location.address}  link={`/rentCar/${location.id}`} text={location.name} ImageSrc={"public/spot.svg"}/>
+                    <TileComponent key={location.id} name={location.name} address={location.address}
+                                   link={`/rentCar/${location.id}`} text={location.name} ImageSrc={"public/spot.svg"}/>
                 ))}
             </Grid>
         </Box>
