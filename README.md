@@ -42,12 +42,12 @@ Before you begin, ensure you have the following software installed on your syste
   "email": "user2@example.com",
   "password": "Hashedpassword2!"
 }
-![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/e8b16322-0889-4524-9953-49f6d436bb78)
+ ![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/e8b16322-0889-4524-9953-49f6d436bb78)
 
 registration: 
 
-![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/2faae036-938a-409c-8543-f1d4f8f395f6)
-
+ ![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/2faae036-938a-409c-8543-f1d4f8f395f6)
+ 
 7. rent car
    first page contains locations for renting car
    
