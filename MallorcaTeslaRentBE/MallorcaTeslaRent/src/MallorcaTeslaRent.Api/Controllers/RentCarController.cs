@@ -1,5 +1,4 @@
-﻿using MallorcaTeslaRent.Application.Cars.Commands.Update;
-using MallorcaTeslaRent.Application.Cars.Query.Get;
+﻿using MallorcaTeslaRent.Application.Cars.Query.Get;
 using MallorcaTeslaRent.Application.Cars.Query.GetList;
 using MallorcaTeslaRent.Application.RentalLocations.Query.Get;
 using MallorcaTeslaRent.Application.RentalLocations.Query.GetList;

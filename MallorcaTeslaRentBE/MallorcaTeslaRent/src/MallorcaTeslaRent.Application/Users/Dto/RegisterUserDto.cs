@@ -11,5 +11,5 @@ public class RegisterUserDto
     public string Name { get; set; }
     public string Surname { get; set; }
     public DateTime DateOfBirth { get; set; }
-    public Role Role { get; set; }
+    public Role Role { get; set; } = Role.User;
 }

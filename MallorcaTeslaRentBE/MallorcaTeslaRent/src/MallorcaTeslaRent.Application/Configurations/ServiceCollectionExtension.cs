@@ -16,6 +16,7 @@ public static class ServiceCollectionExtension
     {
         services.AddHttpContextAccessor();
         services.AddScoped<ICurrentUserService, CurrentUserService>();
+        services.AddScoped<IIdentityService, IdentityService>();
 
         services.AddMediatR(cfg => { cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()); });
         services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();

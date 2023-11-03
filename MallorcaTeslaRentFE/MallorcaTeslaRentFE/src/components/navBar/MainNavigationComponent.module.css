@@ -1,0 +1,23 @@
+﻿.header {
+    max-width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.list {
+    display: flex;
+    gap: 1rem;
+}
+
+.list a {
+    text-decoration: none;
+    color: black;
+}
+
+.list a:hover,
+.list a.active {
+    font-weight: bold;
+    color: black;
+    text-decoration: underline;
+}
