@@ -32,7 +32,6 @@ Before you begin, ensure you have the following software installed on your syste
 5. back end runs on: http://localhost:5193 and front end on: http://localhost:5173
 
 6. logi in or registration
-   here u have two accounts
  - admin:
    {
   "email": "user1@example.com",
