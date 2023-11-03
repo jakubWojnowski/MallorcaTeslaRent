@@ -41,7 +41,6 @@ Before you begin, ensure you have the following software installed on your syste
 {
   "email": "user2@example.com",
   "password": "Hashedpassword2!"
-
 }
 - login
   
