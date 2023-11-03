@@ -6,18 +6,18 @@ using MediatR;
 
 namespace MallorcaTeslaRent.Application.Cars.Query.GetList;
 
-public class GetAllCarsQueryHandler : IRequestHandler<GetAllCarsQuery, IEnumerable<CarDto>>
+public class GetAllCarsByLocationIdQueryHandler : IRequestHandler<GetAllCarsByLocationIdQuery, IEnumerable<CarDto>>
 {
     private readonly ICarRepository _carRepository;
     private static readonly CarMappings Mapper = new();
 
-    public GetAllCarsQueryHandler(ICarRepository carRepository)
+    public GetAllCarsByLocationIdQueryHandler(ICarRepository carRepository)
     {
         _carRepository = carRepository;
     }
-    public async Task<IEnumerable<CarDto>> Handle(GetAllCarsQuery request, CancellationToken cancellationToken)
+    public async Task<IEnumerable<CarDto>> Handle(GetAllCarsByLocationIdQuery request, CancellationToken cancellationToken)
     {
-        var cars = await _carRepository.GetAllAsync(cancellationToken);
+        var cars = await _carRepository.GetAllForConditionAsync(c=> c.RentalLocationId == request.LocationId,cancellationToken);
         return Mapper.MapCarDtosToCars(cars);
         
     }

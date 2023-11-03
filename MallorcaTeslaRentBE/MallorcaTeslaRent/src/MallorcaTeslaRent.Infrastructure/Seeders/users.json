@@ -1,0 +1,20 @@
+[
+  {
+    "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "Email": "user1@example.com",
+    "HashedPassword": "AQAAAAIAAYagAAAAEOSj/G8O8Xmpf8zy2BNQAHwnMyn/pdxHIO0+rXkqLrnLFIzmWZVLECg9L6rapn8lvw==",
+    "Name": "John",
+    "Surname": "Doe",
+    "DateOfBirth": "1980-01-01T00:00:00Z",
+    "Role": 1
+  },
+  {
+    "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa7",
+    "Email": "user2@example.com",
+    "HashedPassword": "AQAAAAIAAYagAAAAEFZ5fQKSzoHeCKivDyLle0rVd3QIsoeaa/xxnc4Zhkv8Z4GAnm70fNLyDFGUM8c+ww==",
+    "Name": "Jane",
+    "Surname": "Doe",
+    "DateOfBirth": "1985-01-01T00:00:00Z",
+    "Role": 2
+  }
+]

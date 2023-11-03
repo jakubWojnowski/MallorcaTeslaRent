@@ -12,5 +12,5 @@ public class Car
     public Guid RentalLocationId { get; set; }
    
     public virtual RentalLocation RentalLocation { get; set; }
-    public virtual ICollection<Reservation> Reservations { get; set; }
+    public virtual ICollection<Reservation>? Reservations { get; set; }
 }

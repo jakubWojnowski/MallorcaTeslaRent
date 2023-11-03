@@ -3,4 +3,4 @@ using MediatR;
 
 namespace MallorcaTeslaRent.Application.Cars.Query.GetList;
 
-public record GetAllCarsQuery : IRequest<IEnumerable<CarDto>>;
+public record GetAllCarsByLocationIdQuery(Guid LocationId) : IRequest<IEnumerable<CarDto>>;
