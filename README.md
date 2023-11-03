@@ -34,16 +34,7 @@ Before you begin, ensure you have the following software installed on your syste
 ## FRONT END
 
 1. login or registration
- - admin:
-   {
-  "email": "user1@example.com",
-  "password": "Hashedpassword1!"
-}
-- user:
-{
-  "email": "user2@example.com",
-  "password": "Hashedpassword2!"
-}
+   
 - login
   
  ![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/bec346d2-8540-4b97-b85c-6bde8d06a7f3)
