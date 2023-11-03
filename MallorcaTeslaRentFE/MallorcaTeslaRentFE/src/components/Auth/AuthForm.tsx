@@ -90,7 +90,6 @@ const AuthForm: FC = () => {
             return;
         }
         const token = await response.text();
-        console.log(token);
         localStorage.setItem('token', token);
         navigate("/");
     }

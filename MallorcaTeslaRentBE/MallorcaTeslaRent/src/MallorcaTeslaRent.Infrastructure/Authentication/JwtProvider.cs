@@ -26,12 +26,11 @@ internal class JwtProvider : IJwtProvider
             new(ClaimTypes.Email, user.Email),
             new(ClaimTypes.Role, user.Role.ToString()),
             new(ClaimTypes.DateOfBirth, user.DateOfBirth.ToString("yyyy-MM-dd"))
-            
         };
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_authenticationSettings.JwtKey));
         var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-        var expires = DateTime.Now.AddDays(Convert.ToDouble(_authenticationSettings.JwtExpireDays));
+        var expires = DateTime.Now.AddDays(Convert.ToDouble(_authenticationSettings.JwtExpiredDays));
 
         var toke = new JwtSecurityToken(_authenticationSettings.JwtIssuer,
             _authenticationSettings.JwtIssuer,

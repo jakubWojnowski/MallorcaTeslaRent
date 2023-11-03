@@ -3,6 +3,7 @@ using FluentValidation.AspNetCore;
 using MallorcaTeslaRent.Application.Configurations;
 using MallorcaTeslaRent.Configurations;
 using MallorcaTeslaRent.Infrastructure.Configurations;
+using MallorcaTeslaRent.Infrastructure.Seeders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,5 +28,13 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "MallorcaTeslaRent"));
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var dataSeeder = services.GetRequiredService<DataSeeder>();
+
+    await dataSeeder.SeedAsync();
+}
 app.Run();
 

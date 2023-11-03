@@ -1,9 +1,8 @@
-﻿import {LocationInterface} from "../../shared/Types.ts";
+﻿import {CarInterface} from "../../shared/Types.ts";
 
-export const fetchLocationsAction = async (token: string): Promise<LocationInterface[]> => {
-
+export const fetchCarsAction = async (token: string): Promise<CarInterface[]> => {
     if (token) {
-        const response = await fetch(`http://localhost:5193/api/RentCar/RentalLocations`, {
+        const response = await fetch(`http://localhost:5193/api/RentCar/Cars`, {
             method: 'GET',
             headers: {
                 'Accept': '*/*',
@@ -16,8 +15,8 @@ export const fetchLocationsAction = async (token: string): Promise<LocationInter
             throw new Error('Get locations failed');
         }
 
-        return  await response.json();
-      
+        return await response.json();
+
     } else {
         console.log('Token is not available');
     }

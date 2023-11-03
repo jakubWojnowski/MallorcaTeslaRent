@@ -16,3 +16,13 @@ export interface LocationInterface {
     name: string;
     address: string;
 }
+
+export interface CarInterface {
+    id: number;
+    name: string;
+    model: string;
+    description: string;
+    pricePerDay: number;
+    NumberOfSeats: number;
+    locationId: number;
+}

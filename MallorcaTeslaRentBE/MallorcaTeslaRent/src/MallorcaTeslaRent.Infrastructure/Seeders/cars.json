@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "Name": "Tesla Model S",
+    "Model": "Model S",
+    "Description": "Luxury all-electric sedan",
+    "PricePerDay": 100,
+    "NumberOfSeats": 5,
+    "RentalLocationId": "3fa85f64-5717-4562-b3fc-2c963f66afa1"
+  },
+  {
+    "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa7",
+    "Name": "Tesla Model 3",
+    "Model": "Model 3",
+    "Description": "Affordable all-electric sedan",
+    "PricePerDay": 80,
+    "NumberOfSeats": 5,
+    "RentalLocationId": "3fa85f64-5717-4562-b3fc-2c963f66afa1"
+  },
+  {
+    "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa8",
+    "Name": "Tesla Model X",
+    "Model": "Model X",
+    "Description": "All-electric SUV",
+    "PricePerDay": 120,
+    "NumberOfSeats": 7,
+    "RentalLocationId": "3fa85f64-5717-4562-b3fc-2c963f66afa2"
+  },
+  {
+    "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa9",
+    "Name": "Tesla Model Y",
+    "Model": "Model Y",
+    "Description": "Compact all-electric SUV",
+    "PricePerDay": 90,
+    "NumberOfSeats": 7,
+    "RentalLocationId": "3fa85f64-5717-4562-b3fc-2c963f66afa2"
+  },
+  {
+    "Id": "3fa85f64-5717-4562-b3fc-2c963f66afaA",
+    "Name": "Tesla Model S",
+    "Model": "Model S",
+    "Description": "Luxury all-electric sedan",
+    "PricePerDay": 100,
+    "NumberOfSeats": 5,
+    "RentalLocationId": "3fa85f64-5717-4562-b3fc-2c963f66afa3"
+  },
+  {
+    "Id": "3fa85f64-5717-4562-b3fc-2c963f66afaB",
+    "Name": "Tesla Model 3",
+    "Model": "Model 3",
+    "Description": "Affordable all-electric sedan",
+    "PricePerDay": 80,
+    "NumberOfSeats": 5,
+    "RentalLocationId": "3fa85f64-5717-4562-b3fc-2c963f66afa3"
+  },
+  {
+    "Id": "3fa85f64-5717-4562-b3fc-2c963f66afaC",
+    "Name": "Tesla Model X",
+    "Model": "Model X",
+    "Description": "All-electric SUV",
+    "PricePerDay": 120,
+    "NumberOfSeats": 7,
+    "RentalLocationId": "3fa85f64-5717-4562-b3fc-2c963f66afa4"
+  },
+  {
+    "Id": "3fa85f64-5717-4562-b3fc-2c963f66afaD",
+    "Name": "Tesla Model Y",
+    "Model": "Model Y",
+    "Description": "Compact all-electric SUV",
+    "PricePerDay": 90,
+    "NumberOfSeats": 7,
+    "RentalLocationId": "3fa85f64-5717-4562-b3fc-2c963f66afa4"
+  }
+]

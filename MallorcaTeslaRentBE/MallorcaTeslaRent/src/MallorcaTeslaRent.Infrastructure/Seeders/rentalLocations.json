@@ -1,0 +1,22 @@
+[
+  {
+    "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa1",
+    "Name": "Palma Airport",
+    "Address": "Palma Airport, Palma, Spain"
+  },
+  {
+    "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa2",
+    "Name": "Palma City Center",
+    "Address": "Palma City Center, Palma, Spain"
+  },
+  {
+    "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa3",
+    "Name": "Alcudia",
+    "Address": "Alcudia, Spain"
+  },
+  {
+    "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa4",
+    "Name": "Manacor",
+    "Address": "Manacor, Spain"
+  }
+]
