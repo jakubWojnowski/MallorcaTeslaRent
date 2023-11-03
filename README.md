@@ -72,7 +72,10 @@ Before you begin, ensure you have the following software installed on your syste
 
 ## Back End
 # Back End is build with clean arch + MediatR
+
+
 - Architecture:
+  
 ![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/196f2727-cdae-4eaa-89bb-80a92c75a1be)
 
 
