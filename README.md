@@ -74,6 +74,9 @@ Before you begin, ensure you have the following software installed on your syste
   
 ![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/4877f599-14ad-4051-a7c7-113c5eafd40d)
 
+- Database
+
+![image](https://github.com/jakubWojnowski/MallorcaTeslaRent/assets/83953649/278b5cea-46e7-4b99-b23c-5782f7084f07)
 
 
 
