@@ -2,7 +2,7 @@
 
 # .NET and React + TypeScript Application
 
-This is a template repository for a web application built with .NET and React + TypeScript. It includes instructions for setting up the development environment, running the application using Docker, and managing database migrations with Entity Framework Core.
+This is repository for a web application built with .NET and React + TypeScript. It includes instructions for setting up the development environment, running the application using Docker, and managing database migrations with Entity Framework Core.
 
 ## Requirements
 
